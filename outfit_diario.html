@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outfit del Día</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+
+    <h1 class="text-3xl font-bold text-gray-800 mb-6">Tu Outfit del Día</h1>
+
+    <div id="outfit-container" class="bg-white p-6 shadow-lg rounded-lg w-full max-w-md text-center">
+        <p class="text-lg text-gray-600 mb-4">Haz clic en el botón para generar tu outfit</p>
+        
+        <div class="space-y-4">
+            <img id="top-image" class="w-32 mx-auto hidden" alt="Parte superior">
+            <img id="bottom-image" class="w-32 mx-auto hidden" alt="Parte inferior">
+            <img id="shoes-image" class="w-32 mx-auto hidden" alt="Zapatos">
+        </div>
+        
+        <button onclick="generarOutfit()" 
+            class="mt-6 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+            Generar Outfit
+        </button>
+    </div>
+
+    <a href="index.html" class="mt-4 text-blue-600 hover:underline">Volver a Inicio</a>
+
+    <script>
+        function generarOutfit() {
+            // Array de imágenes de prendas (debes reemplazarlas con tus propias imágenes)
+            const tops = ["img/top1.png", "img/top2.png", "img/top3.png"];
+            const bottoms = ["img/bottom1.png", "img/bottom2.png", "img/bottom3.png"];
+            const shoes = ["img/shoes1.png", "img/shoes2.png", "img/shoes3.png"];
+
+            // Seleccionar aleatoriamente una prenda de cada categoría
+            document.getElementById("top-image").src = tops[Math.floor(Math.random() * tops.length)];
+            document.getElementById("bottom-image").src = bottoms[Math.floor(Math.random() * bottoms.length)];
+            document.getElementById("shoes-image").src = shoes[Math.floor(Math.random() * shoes.length)];
+
+            // Mostrar las imágenes
+            document.getElementById("top-image").classList.remove("hidden");
+            document.getElementById("bottom-image").classList.remove("hidden");
+            document.getElementById("shoes-image").classList.remove("hidden");
+        }
+    </script>
+
+</body>
+</html>
