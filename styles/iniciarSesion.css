@@ -1,0 +1,121 @@
+/* Estilo general de la página */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: rgba(245,245,245, 0.5); /* Fondo gris difuminado */
+}
+
+/* Contenedor principal */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Caja de inicio de sesión */
+.login-box {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    z-index: 10; /* Asegura que la caja esté por encima del fondo difuminado */
+    border: 1px solid #ddd; /* Bordes suaves */
+}
+
+/* Título del formulario */
+h2 {
+    font-size: 28px;
+    color: #d4a373;
+    margin-bottom: 20px;
+    font-family: 'Michroma';
+    font-weight: 120px;
+}
+
+/* Estilo de los grupos de entradas (inputs) */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: #000000;
+    margin-bottom: 5px;
+    display: block;
+    font-family: 'Space Grotesk';
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: #000000;
+    background-color: #f9f9f9;
+    font-family: 'Space Grotesk';
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    border-color: #8e6e53; /* Color marrón claro al enfocar */
+    outline: none;
+}
+
+/* Botón de inicio de sesión */
+.btn-login {
+    background-color: #8e6e53; /* Color marrón claro */
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-family: 'Michroma';
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #704c2b; /* Color marrón oscuro al pasar el ratón */
+}
+
+/* Enlace de registro */
+.register-link {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+    font-family: 'Space Grotesk';
+}
+
+
+.register-link a {
+    color: #8e6e53;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    color: #704c2b; /* Color marrón oscuro al pasar el ratón */
+}
+
+/* Efecto de sombra al hacer foco en los inputs */
+.input-group input:focus {
+    border-color: #8e6e53;
+    box-shadow: 0 0 8px rgba(142, 110, 83, 0.5);
+}
+
+/* Animación para difuminar el fondo */
+body {
+    transition: background 0.5s ease, backdrop-filter 0.5s ease;
+}
+

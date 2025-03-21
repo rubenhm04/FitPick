@@ -1,138 +1,179 @@
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+    box-sizing: border-box;
 }
+
+/* Estilos generales */
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Evita desplazamiento lateral */
+}
+
+/* Barra de navegación fija */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
+    background-color: #F5F5F5;
     padding: 10px 20px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 10;
+    z-index: 100;
     width: 100%;
 }
+
 .navbar .logo {
     font-size: 24px;
     font-weight: bold;
+    font-family: 'Audiowide';
     position: absolute;
     left: 50%;
-    transform: translateX(-50%); /* Centra el nombre en el medio */
+    transform: translateX(-50%);
 }
+
 .navbar .nav-links {
     display: flex;
     gap: 20px;
+    font-family: 'Saira';
 }
+
 .nav-links a {
     text-decoration: none;
     color: black;
     font-size: 16px;
 }
-.nav-links a.active {
-    color: #ff6347; /* Resalta el color en rojo para el botón activo */
-    font-weight: bold;
+
+/* Contenedor que permite el desplazamiento */
+.main {
+    width: 100vw;
+    height: 200vh; /* Doble de la altura para permitir el scroll */
 }
-.add-outfit-button {
-    margin-top: 80px; /* Añadido margen para no solapar con la navbar */
-    margin-bottom: 20px;
+
+/* Sección principal */
+.principal {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Imagen de fondo dentro de principal */
+.imgInicio {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que la imagen cubra todo el espacio */
+    z-index: -1; /* La envía al fondo */
+}
+
+/* Texto de la app */
+.nombre-app {
+    font-family: 'Audiowide';
+    font-size: 50px;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    position: relative;
+    z-index: 1;
+}
+
+/* Botón sobre la imagen */
+.btn-outfit {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgb(255, 107, 107);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Audiowide';
+    transition: background-color 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-outfit:hover {
+    background-color: rgb(200, 50, 50);
+}
+
+/* El overlay (fondo difuso) */
+.overlay {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    backdrop-filter: blur(10px); /* Difumina el fondo */
+}
+
+/* Contenedor para la imagen y el botón de cierre */
+.outfit-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: inline-block;
     text-align: center;
 }
-.add-outfit-button button {
-    padding: 5px 10px; /* Tamaño mínimo solo con el texto */
-    font-size: 14px;
-    background-color: #ff6347;
+
+/* Imagen del monigote */
+.imgOutfitDiario {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Botón de cerrar */
+.btn-cerrar {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #f44336;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    display: inline-block;
-    text-align: center;
 }
-.add-outfit-button button:hover {
-    background-color: #e55347;
+
+.btn-cerrar:hover {
+    background-color: #e53935;
 }
-.gallery-container {
-    margin-top: 10px; /* Elimina el espacio entre el botón y la galería */
-    overflow-y: auto;
-    flex-grow: 1; /* Permite que la galería ocupe el espacio restante */
+
+
+/* Sección secundaria */
+.secundaria {
+    width: 100vw;
+    min-height: 100vh; /* Al menos una pantalla completa */
+    background-color: white;
     padding: 20px;
-    max-height: calc(100vh - 160px); /* Resta el alto de la navbar y los patrocinadores */
-    padding-left: 20px; /* Añadido margen izquierdo */
-    padding-right: 20px; /* Añadido margen derecho */
 }
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Cuatro columnas por fila */
-    gap: 20px;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-}
-.gallery-item {
-    width: 100%;
-    height: 300px; /* Aumenté la altura para hacer las imágenes más anchas */
-    background-color: #ddd;
+
+.secundaria .btn-agregarOutfit {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: 'Saira';
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    position: relative;
-}
-.like-icon {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    display: flex;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-}
-.like-icon img {
-    width: 20px;
-    margin-right: 5px;
-}
-/* Nueva sección para patrocinadores */
-.sponsors {
-    background-color: #f5f5f5;
-    padding: 10px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
-}
-.sponsors h2 {
-    margin-bottom: 10px;
-    font-size: 16px;
-}
-.sponsors .logos {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.sponsors .logo {
-    width: 60px;
-    height: 60px;
-    background-color: #ddd;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: bold;
-    color: white;
 }

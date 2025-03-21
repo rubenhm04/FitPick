@@ -1,124 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitPick</title>
-    <link rel="stylesheet" href="styles/index.css">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="nav-links">
-            <a href="#">MiColección</a>
-            <a href="#">Compra/Venta</a>
-            <a href="#">Sugerencias</a>
-        </div>
-        <div class="logo">FitPick</div>
-        <div class="nav-links" style="margin-right: 40px;">
-            <a href="outfit_diario.html" class="active">MiOutfitDiario</a>
-        </div>
-    </nav>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FitPick</title>
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Michroma&family=Saira:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+        <!-- StyleSheet -->
+        <link rel="stylesheet" href="styles/index.css">
+    </head>
+    
+    <body>
+        <!-- Barra de navegación -->
+        <nav class="navbar">
+            <div class="nav-links">
+                <a href="#top">MiColección</a>
+            </div>
+            <div class="logo">FitPick</div>
+            <div class="nav-links">
+                <a href="#" id="iniciarSesion">Iniciar Sesión</a>
+            </div>
+        </nav>
 
-    <!-- Nueva Sección con Imagen y Botón -->
-    <section class="outfit-preview">
-        <h2>Tu Último Outfit</h2>
-        <img src="img/outfit_ejemplo.png" alt="Último outfit" class="outfit-image">
-        <a href="outfit_diario.html">
-            <button class="generate-outfit-button">Generar Nuevo Outfit</button>
-        </a>
-    </section>
+        <!-- Sección de contenidos -->
+        <section class="main">
+            <div class="principal">
+                <img src="img/fotoInicio.jpg" class="imgInicio">
+                <p class="nombre-app">FitPick</p>
+                <button id="mostrarOutfit" class="btn-outfit">MiOutfitDiario</button>     
+            </div>
 
-    <!-- Botón Agregar Outfit -->
-    <div class="add-outfit-button">
-        <button>Agregar Outfit</button>
-    </div>
+            <div id="overlay" class="overlay">
+                <div class="outfit-container">
+                    <img src="img/miOutfitDiario.png" class="imgOutfitDiario">
+                    <button id="cerrarOutfit" class="btn-cerrar">Cerrar</button>
+                </div>
+            </div>
 
-    <section class="gallery-container">
-        <div class="gallery">
-            <div class="gallery-item">
-                Imagen 1
-                <div class="like-icon">
-                    <img src="https://img.icons8.com/ios-filled/50/ffffff/like.png" alt="Like">
-                    45
-                </div>
+            <div class="secundaria">
+                <button id="magregarOutfit" class="btn-agregarOutfit">Agregar Outfit</button>
             </div>
-            <div class="gallery-item">
-                Imagen 2
-                <div class="like-icon">
-                    <img src="https://img.icons8.com/ios-filled/50/ffffff/like.png" alt="Like">
-                    67
-                </div>
-            </div>
-            <div class="gallery-item">
-                Imagen 3
-                <div class="like-icon">
-                    <img src="https://img.icons8.com/ios-filled/50/ffffff/like.png" alt="Like">
-                    120
-                </div>
-            </div>
-            <div class="gallery-item">
-                Imagen 4
-                <div class="like-icon">
-                    <img src="https://img.icons8.com/ios-filled/50/ffffff/like.png" alt="Like">
-                    80
-                </div>
-            </div>
-            <div class="gallery-item">
-                Imagen 5
-                <div class="like-icon">
-                    <img src="https://img.icons8.com/ios-filled/50/ffffff/like.png" alt="Like">
-                    32
-                </div>
-            </div>
-            <div class="gallery-item">
-                Imagen 6
-                <div class="like-icon">
-                    <img src="https://img.icons8.com/ios-filled/50/ffffff/like.png" alt="Like">
-                    55
-                </div>
-            </div>
-            <div class="gallery-item">
-                Imagen 7
-                <div class="like-icon">
-                    <img src="https://img.icons8.com/ios-filled/50/ffffff/like.png" alt="Like">
-                    98
-                </div>
-            </div>
-            <div class="gallery-item">
-                Imagen 8
-                <div class="like-icon">
-                    <img src="https://img.icons8.com/ios-filled/50/ffffff/like.png" alt="Like">
-                    65
-                </div>
-            </div>
-            <div class="gallery-item">
-                Imagen 9
-                <div class="like-icon">
-                    <img src="https://img.icons8.com/ios-filled/50/ffffff/like.png" alt="Like">
-                    112
-                </div>
-            </div>
-            <div class="gallery-item">
-                Imagen 10
-                <div class="like-icon">
-                    <img src="https://img.icons8.com/ios-filled/50/ffffff/like.png" alt="Like">
-                    79
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Sección de patrocinadores -->
-    <section class="sponsors">
-        <h2>Patrocinadores</h2>
-        <div class="logos">
-            <div class="logo">Marca A</div>
-            <div class="logo">Marca B</div>
-            <div class="logo">Marca C</div>
-            <div class="logo">Marca D</div>
-            <div class="logo">Marca E</div>
-        </div>
-    </section>
+        <script src="scripts/index.js"></script>
 
-</body>
+    </body>
 </html>
