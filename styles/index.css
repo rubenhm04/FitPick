@@ -165,15 +165,109 @@ html, body {
     min-height: 100vh; /* Al menos una pantalla completa */
     background-color: white;
     padding: 20px;
+    display: flex;
+    justify-content: center;  /* Centra horizontalmente */
+    align-items: center;      /* Centra verticalmente */
+    min-height: 50vh;         /* Asegura que tenga altura suficiente */
+    flex-direction: column;   /* Mantiene el botón arriba y las imágenes abajo */
 }
 
-.secundaria .btn-agregarOutfit {
+.secundaria .tituloOutifitsIndex {
     margin-top: 20px;
     padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
+    font-size: 27px;
     font-family: 'Saira';
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    gap: 20px; /* Espacio entre imágenes */
+    justify-content: center;
+    align-items: center;
+    max-width: 80%; /* Limita el ancho para que no se expanda demasiado */
+    margin: 20px auto; /* Centra el grid */
+}
+
+.img-container {
+    position: relative;
+    width: 200px; /* Ajusta según el tamaño deseado */
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px; /* Bordes redondeados */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f0f0f0; /* Color de fondo opcional */
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.like-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 18px;
+    color: red;
+    cursor: pointer;
+    background: white;
+    padding: 5px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* Cambia a 2 columnas en pantallas pequeñas */
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 400px) {
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr); /* 1 columna en móviles muy pequeños */
+    }
+}
+
+
+/*Barra para buscar*/
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    width: 300px;
+    background: #f0f0f0;
+    border-radius: 25px;
+    padding: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    flex: 1;
+    font-size: 16px;
+    color: #333;
+    font-family: 'Saira';
+}
+
+.search-box button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px;
 }
