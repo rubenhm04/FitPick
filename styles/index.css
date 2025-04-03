@@ -1,273 +1,181 @@
+/* ESTILOS GENERALES PARA TODOS LOS ELEMENTOS DEL DOCUMENTO */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilos generales */
+/* ESTILOS PARA EL CUERPO DEL DOCUMENTO */
+
 html, body {
     width: 100%;
     height: 100%;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden; /* Evita desplazamiento lateral */
+    background-color: #FFFFFF;
+    overflow-x: hidden;                         /* Evita desplazamiento lateral */
 }
 
-/* Barra de navegación fija */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #F5F5F5;
-    padding: 10px 20px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    width: 100%;
-}
+/* ESTILOS PARA EL CONTENEDOR PRINCIPAL DEL DOCUMENTO */
 
-.navbar .logo {
-    font-size: 24px;
-    font-weight: bold;
-    font-family: 'Audiowide';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.navbar .nav-links {
-    display: flex;
-    gap: 20px;
-    font-family: 'Saira';
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-}
-
-/* Contenedor que permite el desplazamiento */
 .main {
-    width: 100vw;
-    height: 200vh; /* Doble de la altura para permitir el scroll */
+    height: 100vh; /* La sección ocupa toda la altura visible */
+    overflow: auto; /* Habilita el desplazamiento vertical */
+    position: relative;
 }
 
-/* Sección principal */
-.principal {
-    width: 100vw;
-    height: 100vh;
+/* Contenedor que agrupa la imagen, el nombre de la marca y el botón */
+.index-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-image: url('../img/index-image.jpg'); /* Asegúrate de que la ruta de la imagen sea correcta */
+    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+    background-position: center; /* Centra la imagen */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
 }
 
-/* Imagen de fondo dentro de principal */
-.imgInicio {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Hace que la imagen cubra todo el espacio */
-    z-index: -1; /* La envía al fondo */
-}
-
-/* Texto de la app */
-.nombre-app {
+.brand-name {
+    text-decoration: none; /* Quitar estilo por defecto al enlace */
     font-family: 'Audiowide';
     font-size: 50px;
     color: white;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra más gruesa para mejor visibilidad */
     position: relative;
-    z-index: 1;
+    z-index: 5; /* Lo mantiene por encima de la imagen */
+    font-weight: bold;  /* Aumentar grosor del texto */
 }
 
-/* Botón sobre la imagen */
-.btn-outfit {
+/* Botón sobre la imagen con efecto visual */
+.button-outfit {
     margin-top: 20px;
-    padding: 10px 20px;
+    padding: 12px 24px;
     background-color: rgb(255, 107, 107);
     color: white;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 8px;
+    font-size: 18px;
     cursor: pointer;
     font-family: 'Audiowide';
-    transition: background-color 0.3s;
     position: relative;
-    z-index: 1;
+    z-index: 5;
+    transition: all 0.3s ease-in-out;
+
+    /* Efecto de sombra para dar profundidad */
+    box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.4); /* Aumentamos la sombra para más profundidad */
 }
 
-.btn-outfit:hover {
+/* Efecto hover para mejorar la interacción */
+.button-outfit:hover {
+    background-color: rgb(230, 70, 70);
+    transform: translateY(-2px); /* Efecto de elevación */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6); /* Sombra más grande en hover */
+}
+
+/* Efecto cuando el botón es presionado */
+.button-outfit:active {
     background-color: rgb(200, 50, 50);
+    transform: translateY(2px); /* Simula un efecto de presión */
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.4); /* Sombra más suave */
 }
 
-/* El overlay (fondo difuso) */
-.overlay {
-    display: none; /* Inicialmente oculto */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro */
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+/* Barra de búsqueda */
+.search-bar {
     text-align: center;
-    backdrop-filter: blur(10px); /* Difumina el fondo */
+    margin-bottom: 40px;
 }
 
-/* Contenedor para la imagen y el botón de cierre */
-.outfit-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    display: inline-block;
-    text-align: center;
+.search-bar h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
-/* Imagen del monigote */
-.imgOutfitDiario {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-/* Botón de cerrar */
-.btn-cerrar {
-    margin-top: 10px;
-    padding: 10px 20px;
+.search-bar input {
+    padding: 10px;
+    width: 60%;
     font-size: 16px;
-    background-color: #f44336;
-    color: white;
-    border: none;
     border-radius: 5px;
-    cursor: pointer;
+    border: 1px solid #ddd;
 }
 
-.btn-cerrar:hover {
-    background-color: #e53935;
-}
+/* ESTILOS DE LA GALERÍA DE IMÁGENES */
 
-
-/* Sección secundaria */
-.secundaria {
-    width: 100vw;
-    min-height: 100vh; /* Al menos una pantalla completa */
-    background-color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: center;  /* Centra horizontalmente */
-    align-items: center;      /* Centra verticalmente */
-    min-height: 50vh;         /* Asegura que tenga altura suficiente */
-    flex-direction: column;   /* Mantiene el botón arriba y las imágenes abajo */
-}
-
-.secundaria .tituloOutifitsIndex {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 27px;
-    font-family: 'Saira';
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.grid-container {
+.image-gallery {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
-    gap: 20px; /* Espacio entre imágenes */
-    justify-content: center;
-    align-items: center;
-    max-width: 80%; /* Limita el ancho para que no se expanda demasiado */
-    margin: 20px auto; /* Centra el grid */
+    grid-template-columns: repeat(5, 1fr); /* Tres columnas */
+    gap: 20px; /* Espacio mínimo entre los contenedores */
+    padding: 10px;
+    box-sizing: border-box;
+    justify-items: center; /* Centra los contenedores en la grid */
 }
 
-.img-container {
-    position: relative;
-    width: 200px; /* Ajusta según el tamaño deseado */
-    height: 300px;
-    overflow: hidden;
-    border-radius: 10px; /* Bordes redondeados */
+/* Estilo para el contenedor de cada imagen */
+.image-item {
+    width: 300px;  /* Ancho fijo para cada contenedor */
+    height: 400px; /* Alto fijo para cada contenedor */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    background: #f0f0f0; /* Color de fondo opcional */
-}
-
-.img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    border: 2px solid #ccc; /* Borde suave para las imágenes */
+    padding: 5px; /* Reduzco el padding para que los contenedores estén más ajustados */
     border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    box-sizing: border-box;
 }
 
-.like-icon {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    font-size: 18px;
-    color: red;
-    cursor: pointer;
-    background: white;
-    padding: 5px;
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+/* Garantizar que las imágenes no se deformen y se ajusten al contenedor */
+.image-item img {
+    width: 100%;
+    height: 80%; /* La imagen ocupa el 80% de la altura del contenedor */
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+    border-radius: 8px;
 }
 
-/* Ajuste para pantallas pequeñas */
-@media (max-width: 600px) {
-    .grid-container {
-        grid-template-columns: repeat(2, 1fr); /* Cambia a 2 columnas en pantallas pequeñas */
-        max-width: 90%;
-    }
-}
-
-@media (max-width: 400px) {
-    .grid-container {
-        grid-template-columns: repeat(1, 1fr); /* 1 columna en móviles muy pequeños */
-    }
-}
-
-
-/*Barra para buscar*/
-.search-box {
+/* Estilo para el contenedor del like, ahora en la parte inferior izquierda */
+.like-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Alineación a la izquierda */
+    width: 100%;
     align-items: center;
-    margin: 20px auto;
-    width: 300px;
-    background: #f0f0f0;
-    border-radius: 25px;
-    padding: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 5px; /* Reducido el margen superior para el like */
 }
 
-.search-box input {
-    border: none;
-    outline: none;
-    background: transparent;
-    padding: 10px;
-    flex: 1;
-    font-size: 16px;
+/* Estilo para el texto del contador de likes */
+.like-count {
+    font-size: 14px;
     color: #333;
-    font-family: 'Saira';
+    margin-right: 5px; /* Menor espacio entre el contador y el corazón */
 }
 
-.search-box button {
-    background: transparent;
-    border: none;
+/* Estilo para el corazón */
+.like-button {
+    font-size: 24px;
     cursor: pointer;
-    font-size: 18px;
-    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+    color: #888; /* Corazón gris por defecto */
+}
+
+.like-button.liked {
+    color: red; /* Corazón rojo cuando tiene like */
+}
+
+/* Animación del corazón */
+.like-button.animate {
+    animation: heart-pulse 0.5s ease-in-out;
+}
+
+@keyframes heart-pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

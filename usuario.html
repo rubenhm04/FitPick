@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitPick</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Michroma&family=Saira:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="styles/usuario.css">
+    <link rel="stylesheet" href="styles/nav-bar.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="nav-bar">
+        <div class="nav-links">
+            <div class="dropdown">
+                <a href="" id="miOutfitDiario">MiOutfitDiario</a>
+                <div class="submenu" id="submenu-miColeccion">
+                    <a href="" id="submenu-miOutfitDiario-auto">Generar Automáticamente</a>
+                    <a href="" id="submenu-miOutfitDiario-paso">Generar Paso a Paso</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="miColeccion.html" id="miColeccion-link">MiColección</a>
+                <div class="submenu" id="submenu-miColeccion">
+                    <a href="miColeccion.html" id="submenu-miColeccion-show">Ver MiColeccion</a>
+                    <a href="miColeccion.html" id="submenu-miColeccion-add">Añadir Prenda</a>
+                    <a href="miColeccion.html" id="submenu-miColeccion-delete">Eliminar Prenda</a>
+                    <a href="miColeccion.html" id="submenu-miColeccion-organize">Organizar</a>
+                </div>
+            </div>
+        </div>
+        <div class="marca">
+            <a href="index.html" id="marca-link">FitPick</a>
+        </div>
+        <div class="nav-links">
+            <div class="dropdown">
+                <a href="usuario.html" id="usuario">JuanElEmpalador</a>
+                <div class="submenu" id="submenu-Usuario">
+                    <a href="usuario.html" id="submenu-usuario-config">Configuración</a>
+                    <a href="usuario.html" id="submenu-usuario-cerrarSesion">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección de contenidos -->
+    <section class="config-container">
+        
+        <h1>Configuración de Usuario</h1>
+
+        <form id="configForm">
+            <div class="form-group">
+                <label for="email">Correo de Usuario:</label>
+                <input type="email" id="email" value="usuario@ejemplo.com" disabled />
+            </div>
+            <div class="form-group">
+                <label for="dob">Fecha de Nacimiento:</label>
+                <input type="date" id="dob" value="1990-01-01" />
+            </div>
+            <div class="form-group">
+                <label for="calendarAccess">Acceso al Calendario:</label>
+                <input type="checkbox" id="calendarAccess" />
+            </div>
+            <div class="form-group">
+                <label for="internetAccess">Acceso a Internet:</label>
+                <input type="checkbox" id="internetAccess" />
+            </div>
+            <div class="form-group">
+                <label for="outfitGeneration">Generación de Outfit:</label>
+                <select id="outfitGeneration">
+                    <option value="automatic">Automática</option>
+                    <option value="questions">Con Preguntas</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="language">Idioma:</label>
+                <select id="language">
+                    <option value="es">Español</option>
+                    <option value="en">Inglés</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="notifications">Notificaciones:</label>
+                <input type="checkbox" id="notifications" />
+            </div>
+            <div class="form-group">
+                <label for="theme">Tema:</label>
+                <select id="theme">
+                    <option value="light">Claro</option>
+                    <option value="dark">Oscuro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="socialConnection">Conexión Social:</label>
+                <input type="checkbox" id="socialConnection" />
+                <span>Permitir vinculación con redes sociales.</span>
+            </div>
+            <button type="submit">Guardar Configuración</button>
+        </form>
+    </section>
+
+    <!-- Funcionalidad JavaScript -->
+    <script src="scripts/usuario.js"></script>
+</body>
+</html>

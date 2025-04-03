@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FitPick</title>
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Michroma&family=Saira:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+        <!-- StyleSheet -->
+        <link rel="stylesheet" href="styles/mostrarOutfit.css">
+        <link rel="stylesheet" href="styles/nav-bar.css">
+    </head>
+    
+    <body>
+
+        <nav class="nav-bar">
+            <div class="nav-links">
+                <div class="dropdown">
+                    <a href="mostrarOutfit.html" id="miOutfitDiario">MiOutfitDiario</a>
+                    <div class="submenu" id="submenu-miColeccion">
+                        <a href="mostrarOutfit.html" id="submenu-miOutfitDiario-auto">Generar Automáticamente</a>
+                        <a href="mostrarOutfit.html" id="submenu-miOutfitDiario-paso">Generar Paso a Paso</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="miColeccion.html" id="miColeccion-link">MiColección</a>
+                    <div class="submenu" id="submenu-miColeccion">
+                        <a href="miColeccion.html" id="submenu-miColeccion-show">Ver MiColeccion</a>
+                        <a href="miColeccion.html" id="submenu-miColeccion-add">Añadir Prenda</a>
+                        <a href="miColeccion.html" id="submenu-miColeccion-delete">Eliminar Prenda</a>
+                        <a href="miColeccion.html" id="submenu-miColeccion-organize">Organizar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="marca">
+                <a href="index.html" id="marca-link">FitPick</a>
+            </div>
+            <div class="nav-links">
+                <div class="dropdown">
+                    <a href="usuario.html" target="_blank" id="usuario">JuanElEmpalador</a>
+                    <div class="submenu" id="submenu-Usuario">
+                        <a href="usuario.html" id="submenu-usuario-config">Configuración</a>
+                        <a href="usuario.html" id="submenu-usuario-cerrarSesion">Cerrar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        
+  
+
+        
+        <div class="container">
+            <h1>Generador de Outfit</h1>
+            
+            <label for="outfit-type">Selecciona cómo deseas generar tu outfit:</label>
+            <select id="outfit-type">
+                <option value="automatic">Hacerlo automáticamente</option>
+                <option value="questions">Hacerlo con preguntas</option>
+            </select>
+            
+            <div id="automatic-outfit" class="outfit-display">
+                <button id="auto-button">Generar Outfit Automático</button>
+                <div id="outfit-image" class="outfit-image"></div>
+            </div>
+    
+            <div id="questions-outfit" class="outfit-display">
+                <button id="questions-button">Generar Outfit con Preguntas</button>
+                <div id="questions-form" class="questions-form">
+                    <label for="occasion">¿Para qué es?</label>
+                    <select id="occasion">
+                        <option value="uni">Universidad</option>
+                        <option value="work">Trabajo</option>
+                    </select>
+    
+                    <label for="weather">¿Hace buen tiempo?</label>
+                    <select id="weather">
+                        <option value="yes">Sí</option>
+                        <option value="no">No</option>
+                    </select>
+    
+                    <label for="mood">¿Es un plan formal?</label>
+                    <select id="mood">
+                        <option value="yes">Sí</option>
+                        <option value="no">No</option>
+                    </select>
+    
+                    <button id="submit-questions">Generar Outfit</button>
+                </div>
+                <div id="questions-outfit-image" class="outfit-image"></div>
+            </div>
+        </div>
+
+        <script src="scripts/mostrarOutfit.js"></script>
+
+    </body>
+</html>

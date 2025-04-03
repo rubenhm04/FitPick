@@ -1,0 +1,141 @@
+/* ESTILOS GENERALES PARA TODOS LOS ELEMENTOS DEL DOCUMENTO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ESTILOS PARA EL CUERPO DEL DOCUMENTO */
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+    overflow-x: hidden;                         /* Evita desplazamiento lateral */
+}
+
+/* CONFIGURACIÓN */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Saira';
+}
+
+/* Ajustes al contenedor de configuración */
+
+.config-container {
+    margin-top: 60px;
+    margin-bottom: 10px;
+    background-color: white;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    height: 90vh; /* Ocupa casi toda la altura de la pantalla */
+    overflow-y: auto; /* Permite desplazarse si el contenido excede la altura */
+    
+}
+
+h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-family: 'Saira';
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 16px;
+}
+
+label {
+    font-size: 14px;
+    color: #666;
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type="email"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    background-color: #7D5A4C; /* Marrón suave */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    font-family: 'Saira';
+}
+
+button:hover {
+    background-color: #5A4031; /* Marrón oscuro */
+}
+
+button:active {
+    background-color: #4C3627;
+}
+
+input:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+select {
+    font-size: 16px;
+}
+
+/* Estilo para las casillas de verificación */
+input[type="checkbox"]:checked {
+    background-color: #7D5A4C;
+    border-color: #7D5A4C;
+}
+
+input[type="checkbox"]:focus {
+    outline: none;
+    border-color: #7D5A4C;
+}
+
+input[type="checkbox"]:checked + label {
+    color: #7D5A4C;
+}
+
+/* Estilo para el select y nuevas opciones */
+select {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+}
+
+span {
+    font-size: 14px;
+    color: #888;
+    display: block;
+    margin-top: 5px;
+}

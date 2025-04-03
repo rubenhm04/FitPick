@@ -1,0 +1,85 @@
+/* Reset de márgenes y bordes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Diseño de la página */
+body {
+    font-family: 'Saira';
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    margin-top: 60px;
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilo de los botones y selects */
+button, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover, select:hover {
+    border-color: #888;
+}
+
+/* Sección de visualización de outfits */
+.outfit-display {
+    display: none;
+}
+
+.outfit-image {
+    text-align: center;
+    margin-top: 20px;
+    display: none;
+}
+
+.outfit-image img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* Para cuando se muestra el contenido */
+.active {
+    display: block;
+}
+
+/* Estilos adicionales */
+.questions-form {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+select {
+    margin-bottom: 10px;
+}

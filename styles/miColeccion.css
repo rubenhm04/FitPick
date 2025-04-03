@@ -1,0 +1,80 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    height: 100%; /* Aseguramos que el body ocupe toda la pantalla */
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+
+/* Aseguramos que .main ocupe todo el espacio disponible */
+.main {
+    margin-top: 60px;
+    height: calc(100vh - 80px); /* Ocupa el 100% del alto menos la altura de la barra */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Ajustamos el tamaño de la .image-gallery */
+.image-gallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 75%; /* Aumentamos el ancho de la galería */
+    height: auto; /* Dejamos que se ajuste según las imágenes */
+    overflow-y: auto; /* Agrega desplazamiento si es necesario */
+    padding: 20px; /* Añadimos padding para dar espacio entre los contenedores y los bordes de la galería */
+}
+
+/* Ajustamos el diseño del contenedor con las imágenes usando grid */
+#gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas de imágenes */
+    grid-gap: 30px; /* Aumentamos el espacio entre los contenedores */
+    width: 100%; /* Asegura que ocupe el 100% del ancho disponible */
+    padding: 0 15px; /* Añadimos padding a los lados */
+    justify-items: center; /* Centra los contenedores dentro del grid */
+}
+
+/* Estilo para los contenedores de las imágenes */
+.image-container {
+    width: 250px; /* Tamaño de los contenedores (más grande) */
+    height: 250px; /* Alto fijo aumentado */
+    border-radius: 12px; /* Bordes redondeados */
+    overflow: hidden; /* Las imágenes no se desbordarán */
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Sombra alrededor de cada contenedor */
+    border: 3px solid #F5F5F5; /* Borde alrededor del contenedor */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transición suave para el hover */
+    margin-top: 30px; /* Añadimos un mayor margen entre los contenedores */
+    margin-bottom: 30px;
+}
+
+/* Efecto hover en los contenedores */
+.image-container:hover {
+    transform: scale(1.1); /* Hace un zoom ligero al pasar el mouse */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); /* Aumenta la sombra */
+    border-color: #b0b0b0; /* Cambia el borde al pasar el ratón */
+}
+
+/* Estilo para las imágenes dentro de los contenedores */
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que la imagen cubra todo el contenedor */
+}

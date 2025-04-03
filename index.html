@@ -1,107 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>FitPick</title>
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Michroma&family=Saira:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-        <!-- StyleSheet -->
-        <link rel="stylesheet" href="styles/index.css">
-    </head>
-    
-    <body>
-        <!-- Barra de navegación -->
-        <nav class="navbar">
-            <div class="nav-links">
-                <a href="#top">MiColección</a>
-            </div>
-            <div class="logo">FitPick</div>
-            <div class="nav-links">
-                <a href="#" id="iniciarSesion">Iniciar Sesión</a>
-            </div>
-        </nav>
-
-        <!-- Sección de contenidos -->
-        <section class="main">
-            <div class="principal">
-                <img src="img/fotoInicio.jpg" class="imgInicio">
-                <p class="nombre-app">FitPick</p>
-                <button id="mostrarOutfit" class="btn-outfit">MiOutfitDiario</button>     
-            </div>
-
-            <div id="overlay" class="overlay">
-                <div class="outfit-container">
-                    <img src="img/miOutfitDiario.png" class="imgOutfitDiario">
-                    <button id="cerrarOutfit" class="btn-cerrar">Cerrar</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitPick</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Michroma&family=Saira:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/nav-bar.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="nav-bar">
+        <div class="nav-links">
+            <div class="dropdown">
+                <a href="mostrarOutfit.html" id="miOutfitDiario">MiOutfitDiario</a>
+                <div class="submenu" id="submenu-miColeccion">
+                    <a href="mostrarOutfit.html" id="submenu-miOutfitDiario-auto">Generar Automáticamente</a>
+                    <a href="mostrarOutfit.html" id="submenu-miOutfitDiario-paso">Generar Paso a Paso</a>
                 </div>
             </div>
-
-            <div class="secundaria">
-
-                <h1 class="tituloOutifitsIndex">OUTFITS EN TENDENCIA</h1>
-
-
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Buscar usuario...">
-                    <button id="searchButton">
-                        🔍
-                    </button>
+            <div class="dropdown">
+                <a href="miColeccion.html" id="miColeccion-link">MiColección</a>
+                <div class="submenu" id="submenu-miColeccion">
+                    <a href="miColeccion.html" id="submenu-miColeccion-show">Ver MiColeccion</a>
+                    <a href="miColeccion.html" id="submenu-miColeccion-add">Añadir Prenda</a>
+                    <a href="miColeccion.html" id="submenu-miColeccion-delete">Eliminar Prenda</a>
+                    <a href="miColeccion.html" id="submenu-miColeccion-organize">Organizar</a>
                 </div>
-
-
-
-                <div class="grid-container">
-                    <!-- 12 contenedores con imágenes (4 por fila) -->
-                    <div class="img-container">
-                        <img src="img/modelos1.jpg" alt="Outfit 1">
-                        <span class="like-icon">❤️</span>
-                    </div>
-                    <div class="img-container">
-                        <img src="img/modelos1.jpg" alt="Outfit 2">
-                        <span class="like-icon">❤️</span>
-                    </div>
-                    <div class="img-container">
-                        <img src="img/modelos1.jpg" alt="Outfit 3">
-                        <span class="like-icon">❤️</span>
-                    </div>
-                    <div class="img-container">
-                        <img src="img/modelos1.jpg" alt="Outfit 4">
-                        <span class="like-icon">❤️</span>
-                    </div>
-                    <div class="img-container">
-                        <img src="img/modelos1.jpg" alt="Outfit 5">
-                        <span class="like-icon">❤️</span>
-                    </div>
-                    <div class="img-container">
-                        <img src="img/modelos1.jpg" alt="Outfit 6">
-                        <span class="like-icon">❤️</span>
-                    </div>
-                    <div class="img-container">
-                        <img src="img/modelos1.jpg" alt="Outfit 7">
-                        <span class="like-icon">❤️</span>
-                    </div>
-                    <div class="img-container">
-                        <img src="img/modelos1.jpg" alt="Outfit 8">
-                        <span class="like-icon">❤️</span>
-                    </div>
-                    <div class="img-container">
-                        <img src="img/modelos1.jpg" alt="Outfit 9">
-                        <span class="like-icon">❤️</span>
-                    </div>
-             
-                    </div>
+            </div>
+        </div>
+        <div class="marca">
+            <a href="index.html" id="marca-link">FitPick</a>
+        </div>
+        <div class="nav-links">
+            <div class="dropdown">
+                <a href="usuario.html" target="_blank" id="usuario">JuanElEmpalador</a>
+                <div class="submenu" id="submenu-Usuario">
+                    <a href="usuario.html" id="submenu-usuario-config">Configuración</a>
+                    <a href="usuario.html" id="submenu-usuario-cerrarSesion">Cerrar Sesión</a>
                 </div>
-                
+            </div>
+        </div>
+    </nav>
 
-
-
+    <!-- Sección de contenidos -->
+    <section class="main">
+        <!-- Aquí empieza la sección de la imagen principal -->
+        <section class="index-image">
+            <a href="index.html" class="brand-name" alt="FitPick">FitPick</a>
+            <a class="button-outfit">MiOutfitDiario</a>     
+        </section>
+        
+        <!-- Aquí empieza la sección de la barra de búsqueda -->
+        <section class="search-section">
+            <h2 class="search-title">Busca tu Outfit</h2>
+            <input type="text" class="search-bar" placeholder="Escribe aquí tu búsqueda...">
+        </section>
+        
+        <!-- Aquí empieza la sección de la galería de imágenes -->
+        <section class="image-gallery">
+            <div class="image-container">
+                <!-- Las imágenes se cargarán aquí dinámicamente -->
             </div>
         </section>
-
-        <script src="scripts/index.js"></script>
-
-    </body>
+    </section>
+    
+    <!-- Funcionalidad JavaScript -->
+    <script src="scripts/index.js"></script>
+</body>
 </html>
