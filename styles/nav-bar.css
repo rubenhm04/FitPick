@@ -73,19 +73,19 @@
 }
 
 .submenu {
-    visibility: hidden;                      /* Submenú sigue oculto al principio */
-    opacity: 0;                              /* Submenú empieza completamente transparente */
+    visibility: hidden;                           /* Submenú sigue oculto al principio */
+    opacity: 0;                                   /* Submenú empieza completamente transparente */
     transition: opacity 2s ease-in-out, visibility 0s linear 2s;  /* Hace que la opacidad cambie suavemente */
     position: absolute;
-    top: 100%;                               /* Justo debajo de la barra de navegación */
-    left: 0;                                 /* Alineado a la izquierda con respecto al enlace activador */
+    top: 100%;                                    /* Justo debajo de la barra de navegación */
+    left: 0;                                      /* Alineado a la izquierda con respecto al enlace activador */
     background-color: #f5f5f5;
     padding: 10px;
     border-radius: 5px;
     width: max-content;
     min-width: 180px;
     z-index: 10;
-    margin-top: 10px;                        /* Separación entre la barra de navegación y el submenú */
+    margin-top: 10px;                             /* Separación entre la barra de navegación y el submenú */
     
     /* Efecto de sombra y profundidad */
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);  /* Sombra para darle profundidad */
@@ -93,45 +93,42 @@
 
 /* Cuando el ratón pasa por encima del enlace, el submenú se muestra suavemente */
 .dropdown:hover .submenu {
-    visibility: visible;                     /* Hace visible el submenú */
-    opacity: 1;                              /* Hace que el submenú se vuelva completamente opaco */
-    transition-delay: 0s;                    /* El submenú se muestra de inmediato */
+    visibility: visible;                          /* Hace visible el submenú */
+    opacity: 1;                                   /* Hace que el submenú se vuelva completamente opaco */
+    transition-delay: 0s;                         /* El submenú se muestra de inmediato */
 }
 
 /* Cuando el ratón deja el área del submenú, este sigue visible por un tiempo */
 .dropdown:hover .submenu,
 .submenu:hover {
-    visibility: visible;                     /* Permanece visible mientras el mouse esté sobre el submenú */
-    opacity: 1;                              /* Mantiene la opacidad al 100% */
-    transition-delay: 0s;                    /* El submenú no debe esperar para desaparecer */
+    visibility: visible;                          /* Permanece visible mientras el mouse esté sobre el submenú */
+    opacity: 1;                                   /* Mantiene la opacidad al 100% */
+    transition-delay: 0s;                         /* El submenú no debe esperar para desaparecer */
 }
 
 /* Cuando el ratón sale de la barra de navegación y del submenú, el submenú desaparece después de un breve retraso */
 .dropdown:not(:hover) .submenu,
 .submenu:not(:hover) {
-    opacity: 0;                              /* Hace que el submenú se desvanezca */
-    visibility: hidden;                      /* Lo oculta */
+    opacity: 0;                                   /* Hace que el submenú se desvanezca */
+    visibility: hidden;                           /* Lo oculta */
     transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;  /* Añadimos un retraso antes de que desaparezca */
 }
 
-/* Enlaces dentro del submenú (listado vertical) */
 .submenu a {
-    display: block;                          /* Los enlaces se apilan verticalmente */
+    display: block;                               /* Los enlaces se apilan verticalmente */
     color: #000000;
     padding: 8px 12px;
     text-decoration: none;
     position: relative;
-    margin: 5px 0;                           /* Espaciado entre los enlaces */
-    transition: background-color 0.3s ease;  /* Suaviza el cambio de fondo al hacer hover */
+    margin: 5px 0;                                /* Espaciado entre los enlaces */
+    transition: background-color 0.3s ease;       /* Suaviza el cambio de fondo al hacer hover */
 }
 
-/* Efecto de sombreado para los enlaces dentro del submenú */
 .submenu a:hover {
-    background-color: #ddd;                /* Fondo sombreado */
-    color: rgb(0, 0, 0);                   /* Color del texto al hacer hover */
+    background-color: #ddd;                     /* Fondo sombreado */
+    color: rgb(0, 0, 0);                        /* Color del texto al hacer hover */
 }
 
-/* Evitar subrayado en los enlaces del submenú */
 .submenu a::after {
-    content: none;                           /* Eliminar el pseudo-elemento ::after para que no aparezca subrayado */
+    content: none;                                /* Eliminar el pseudo-elemento ::after para que no aparezca subrayado */
 }

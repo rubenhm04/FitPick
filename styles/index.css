@@ -1,4 +1,5 @@
 /* ESTILOS GENERALES PARA TODOS LOS ELEMENTOS DEL DOCUMENTO */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,14 +12,14 @@ html, body {
     width: 100%;
     height: 100%;
     background-color: #FFFFFF;
-    overflow-x: hidden;                         /* Evita desplazamiento lateral */
+    overflow-x: hidden;                                 /* Evita desplazamiento lateral */
 }
 
 /* ESTILOS PARA EL CONTENEDOR PRINCIPAL DEL DOCUMENTO */
 
 .main {
-    height: 100vh; /* La sección ocupa toda la altura visible */
-    overflow: auto; /* Habilita el desplazamiento vertical */
+    height: 100vh;                                      /* La sección ocupa toda la altura visible */
+    overflow: auto;                                     /* Habilita el desplazamiento vertical */
     position: relative;
 }
 
@@ -27,9 +28,9 @@ html, body {
     width: 100%;
     height: 100%;
     position: relative;
-    background-image: url('../img/index-image.jpg'); /* Asegúrate de que la ruta de la imagen sea correcta */
-    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
-    background-position: center; /* Centra la imagen */
+    background-image: url('../img/index-image.jpg');
+    background-size: cover;                             /* Asegura que la imagen cubra todo el contenedor */
+    background-position: center;                        /* Centra la imagen */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,19 +41,20 @@ html, body {
     text-decoration: none; /* Quitar estilo por defecto al enlace */
     font-family: 'Audiowide';
     font-size: 50px;
-    color: white;
-    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra más gruesa para mejor visibilidad */
+    color: #FFFFFF;
+    /* Sombra más gruesa para mejor visibilidad */
+    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.5);
     position: relative;
-    z-index: 5; /* Lo mantiene por encima de la imagen */
-    font-weight: bold;  /* Aumentar grosor del texto */
-}
+    z-index: 5;                                         /* Lo mantiene por encima de la imagen */
+    font-weight: bold;                                  /* Aumentar grosor del texto */
+}               
 
 /* Botón sobre la imagen con efecto visual */
 .button-outfit {
     margin-top: 20px;
     padding: 12px 24px;
     background-color: rgb(255, 107, 107);
-    color: white;
+    color: #FFFFFF;
     border: none;
     border-radius: 8px;
     font-size: 18px;
@@ -61,111 +63,91 @@ html, body {
     position: relative;
     z-index: 5;
     transition: all 0.3s ease-in-out;
-
+    text-decoration: none;
     /* Efecto de sombra para dar profundidad */
-    box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.4); /* Aumentamos la sombra para más profundidad */
+    box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.4);
 }
 
 /* Efecto hover para mejorar la interacción */
 .button-outfit:hover {
     background-color: rgb(230, 70, 70);
-    transform: translateY(-2px); /* Efecto de elevación */
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6); /* Sombra más grande en hover */
+    transform: translateY(-2px);                        /* Efecto de elevación */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6);     /* Sombra más grande en hover */
 }
 
 /* Efecto cuando el botón es presionado */
 .button-outfit:active {
     background-color: rgb(200, 50, 50);
-    transform: translateY(2px); /* Simula un efecto de presión */
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.4); /* Sombra más suave */
-}
-
-/* Barra de búsqueda */
-.search-bar {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.search-bar h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.search-bar input {
-    padding: 10px;
-    width: 60%;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+    transform: translateY(2px);                         /* Simula un efecto de presión */
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.4);       /* Sombra más suave */
 }
 
 /* ESTILOS DE LA GALERÍA DE IMÁGENES */
 
+/* Ajustamos el diseño del contenedor con las imágenes usando grid */
 .image-gallery {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Tres columnas */
-    gap: 20px; /* Espacio mínimo entre los contenedores */
-    padding: 10px;
-    box-sizing: border-box;
-    justify-items: center; /* Centra los contenedores en la grid */
+    grid-template-columns: repeat(4, 1fr);              /* 4 columnas de imágenes */
+    grid-gap: 30px;                                     /* Aumentamos el espacio entre los contenedores */
+    width: 100%;                                        /* Aumentamos el ancho de la galería */
+    height: auto;                                       /* Dejamos que se ajuste según las imágenes */
+    padding: 20px;                                      /* Añadimos padding a los lados */
+    justify-items: center;                              /* Centra los contenedores dentro del grid */
+    margin-top: 50px;
 }
 
 /* Estilo para el contenedor de cada imagen */
-.image-item {
-    width: 300px;  /* Ancho fijo para cada contenedor */
-    height: 400px; /* Alto fijo para cada contenedor */
+.image-container {
+    width: 325px;                                       /* Ancho fijo para cada contenedor */
+    height: 500px;                                      /* Alto fijo para cada contenedor */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid #ccc; /* Borde suave para las imágenes */
-    padding: 5px; /* Reduzco el padding para que los contenedores estén más ajustados */
+    
+    border: 2px solid #ccc;                           /* Borde suave para las imágenes */
+    padding: 5px;                                       /* Reduzco el padding para que los contenedores estén más ajustados */
     border-radius: 10px;
-    background-color: #f9f9f9;
+    background-color: #F5F5F5;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
     box-sizing: border-box;
 }
 
-/* Garantizar que las imágenes no se deformen y se ajusten al contenedor */
-.image-item img {
-    width: 100%;
-    height: 80%; /* La imagen ocupa el 80% de la altura del contenedor */
-    object-fit: cover; /* Ajusta la imagen sin deformarla */
+.image-container img {
+    width: 100%;                                        /* La imagen ocupa el 100% de la altura del contenedor */
+    height: 90%;                                        /* La imagen ocupa el 80% de la altura del contenedor */
+    object-fit: cover;                                  /* Ajustar la imagen sin deformarla */
     border-radius: 8px;
 }
 
-/* Estilo para el contenedor del like, ahora en la parte inferior izquierda */
 .like-container {
     display: flex;
-    justify-content: flex-start; /* Alineación a la izquierda */
+    justify-content:last baseline;                      /* Alineación a la izquierda */
     width: 100%;
     align-items: center;
-    margin-top: 5px; /* Reducido el margen superior para el like */
+    margin-top: 5px;                                    /* Reducido el margen superior para el like */
 }
 
-/* Estilo para el texto del contador de likes */
 .like-count {
     font-size: 14px;
     color: #333;
-    margin-right: 5px; /* Menor espacio entre el contador y el corazón */
+    margin-right: 5px;                                  /* Menor espacio entre el contador y el corazón */
 }
 
-/* Estilo para el corazón */
 .like-button {
     font-size: 24px;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
-    color: #888; /* Corazón gris por defecto */
+    color: #888;                                      /* Corazón gris por defecto */
 }
 
 .like-button.liked {
-    color: red; /* Corazón rojo cuando tiene like */
+    color: red;                                       /* Corazón rojo cuando tiene like */
 }
 
-/* Animación del corazón */
 .like-button.animate {
-    animation: heart-pulse 0.5s ease-in-out;
+    animation: heart-pulse 0.5s ease-in-out;    
 }
 
 @keyframes heart-pulse {

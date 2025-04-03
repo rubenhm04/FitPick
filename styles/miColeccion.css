@@ -30,39 +30,31 @@ body {
 
 /* Ajustamos el tamaño de la .image-gallery */
 .image-gallery {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 75%; /* Aumentamos el ancho de la galería */
-    height: auto; /* Dejamos que se ajuste según las imágenes */
-    overflow-y: auto; /* Agrega desplazamiento si es necesario */
-    padding: 20px; /* Añadimos padding para dar espacio entre los contenedores y los bordes de la galería */
-}
-
-/* Ajustamos el diseño del contenedor con las imágenes usando grid */
-#gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 columnas de imágenes */
-    grid-gap: 30px; /* Aumentamos el espacio entre los contenedores */
-    width: 100%; /* Asegura que ocupe el 100% del ancho disponible */
-    padding: 0 15px; /* Añadimos padding a los lados */
-    justify-items: center; /* Centra los contenedores dentro del grid */
+    grid-gap: 30px;                        /* Aumentamos el espacio entre los contenedores */
+    width: 100%;                           /* Aumentamos el ancho de la galería */
+    height: auto;                          /* Dejamos que se ajuste según las imágenes */
+    padding: 20px;                         /* Añadimos padding a los lados */
+    justify-items: center;                 /* Centra los contenedores dentro del grid */
+    margin-top: 20px;
 }
 
 /* Estilo para los contenedores de las imágenes */
 .image-container {
-    width: 250px; /* Tamaño de los contenedores (más grande) */
-    height: 250px; /* Alto fijo aumentado */
-    border-radius: 12px; /* Bordes redondeados */
-    overflow: hidden; /* Las imágenes no se desbordarán */
-    position: relative;
+    width: 300px; /* Tamaño de los contenedores (más grande) */
+    height: 300px; /* Alto fijo aumentado */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 3px solid #F5F5F5; /* Borde alrededor del contenedor */
+    border-radius: 10px; /* Bordes redondeados */
     background-color: #fff;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Sombra alrededor de cada contenedor */
-    border: 3px solid #F5F5F5; /* Borde alrededor del contenedor */
+    box-sizing: border-box;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transición suave para el hover */
-    margin-top: 30px; /* Añadimos un mayor margen entre los contenedores */
-    margin-bottom: 30px;
 }
 
 /* Efecto hover en los contenedores */
@@ -77,4 +69,114 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Hace que la imagen cubra todo el contenedor */
+}
+
+/* ESTILOS AÑADIR IMAGEN */
+
+/* Menú desplegable */
+.dropdown-menu {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.dropdown-menu button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: none;
+    background: #444;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown-menu button:hover {
+    background: #666;
+}
+
+/* Estilos del submenú */
+.dropdown-submenu {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1000;
+    min-width: 180px;
+}
+
+.dropdown-submenu button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: none;
+    background: #444;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.dropdown-submenu button:hover {
+    background: #666;
+}
+
+/* Galería */
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.gallery-item {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Cámara */
+.camera-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.camera-overlay video {
+    width: 80%;
+    max-width: 500px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.camera-overlay button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background: white;
+    color: black;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.camera-overlay button:hover {
+    background: #ddd;
 }
