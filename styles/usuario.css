@@ -47,7 +47,7 @@ h1 {
     color: #333;
     margin-bottom: 20px;
     font-weight: 600;
-    font-family: 'Saira';
+    font-family: 'Space Grotesk';
 }
 
 .form-group {
@@ -92,7 +92,7 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 20px;
-    font-family: 'Saira';
+    font-family: 'Michroma';
 }
 
 button:hover {

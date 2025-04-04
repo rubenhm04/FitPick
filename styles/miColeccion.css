@@ -14,7 +14,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f4f4f4;
+    background-color: #f5f5f5;
 }
 
 /* Aseguramos que .main ocupe todo el espacio disponible */
@@ -50,7 +50,7 @@ body {
 
     border: 3px solid #F5F5F5; /* Borde alrededor del contenedor */
     border-radius: 10px; /* Bordes redondeados */
-    background-color: #fff;
+    background-color: #ffffff;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Sombra alrededor de cada contenedor */
     box-sizing: border-box;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transición suave para el hover */
@@ -75,7 +75,7 @@ body {
 /* Menú desplegable */
 .dropdown-menu {
     position: absolute;
-    background: white;
+    background: #FFFFFF;
     border: 1px solid #ccc;
     padding: 10px;
     display: none;
@@ -90,7 +90,7 @@ body {
     margin: 5px 0;
     border: none;
     background: #444;
-    color: white;
+    color: #FFFFFF;
     cursor: pointer;
     border-radius: 5px;
 }
@@ -102,7 +102,7 @@ body {
 /* Estilos del submenú */
 .dropdown-submenu {
     position: absolute;
-    background: white;
+    background: #FFFFFF;
     border: 1px solid #ccc;
     padding: 10px;
     display: none;
@@ -119,7 +119,7 @@ body {
     margin: 5px 0;
     border: none;
     background: #444;
-    color: white;
+    color: #FFFFFF;
     cursor: pointer;
     border-radius: 5px;
     text-align: left;
@@ -161,7 +161,7 @@ body {
 .camera-overlay video {
     width: 80%;
     max-width: 500px;
-    border: 2px solid white;
+    border: 2px solid #FFFFFF;
     border-radius: 10px;
 }
 
@@ -170,8 +170,8 @@ body {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
-    background: white;
-    color: black;
+    background: #FFFFFF;
+    color: #000000;
     font-size: 16px;
     border-radius: 5px;
 }
