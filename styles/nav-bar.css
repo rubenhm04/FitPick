@@ -36,7 +36,6 @@
 .nav-links {
     display: flex;
     gap: 20px;
-    font-family: 'Saira';
 }
 
 /* Estilo para los enlaces (sin subrayado por defecto) */
@@ -46,6 +45,7 @@
     font-size: 18px;
     position: relative;
     display: inline-block;
+    font-family: 'Saira';
 }
 
 /* Subrayado al pasar el ratón */
