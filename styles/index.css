@@ -1,36 +1,49 @@
-/* ESTILOS GENERALES PARA TODOS LOS ELEMENTOS DEL DOCUMENTO */
+/* CSS Variables */
+:root {
+    --color-bg: #FFFFFF;
+    --color-text: #333;
+    --color-gray: #888;
+    --color-white: #FFFFFF;
+    --color-primary: rgb(255, 107, 107);
+    --color-primary-hover: rgb(230, 70, 70);
+    --color-primary-active: rgb(200, 50, 50);
+    --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 0.5rem 1.125rem rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.6);
+}
 
+/* General styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ESTILOS PARA EL CUERPO DEL DOCUMENTO */
-
 html, body {
     width: 100%;
     height: 100%;
-    background-color: #FFFFFF;
-    overflow-x: hidden;                                 /* Evita desplazamiento lateral */
+    background-color: var(--color-white);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
-/* ESTILOS PARA EL CONTENEDOR PRINCIPAL DEL DOCUMENTO */
-
+/* Main container */
 .main {
-    height: 100vh;                                      /* La sección ocupa toda la altura visible */
-    overflow: auto;                                     /* Habilita el desplazamiento vertical */
+    height: 100vh;
+    overflow: auto;
     position: relative;
+    margin-top: 3.125rem; /* Space for fixed nav-bar */
 }
 
-/* Contenedor que agrupa la imagen, el nombre de la marca y el botón */
+/* Index image */
 .index-image {
     width: 100%;
     height: 100%;
     position: relative;
     background-image: url('../img/index-image.jpg');
-    background-size: cover;                             /* Asegura que la imagen cubra todo el contenedor */
-    background-position: center;                        /* Centra la imagen */
+    background-color: var(--color-bg); /* Fallback */
+    background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,168 +51,223 @@ html, body {
 }
 
 .brand-name {
-    text-decoration: none; /* Quitar estilo por defecto al enlace */
-    font-family: 'Audiowide';
-    font-size: 50px;
-    color: #FFFFFF;
-    /* Sombra más gruesa para mejor visibilidad */
-    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    font-family: 'Audiowide', sans-serif;
+    font-size: 3.125rem;
+    color: var(--color-white);
+    text-shadow: 0.1875rem 0.1875rem 0.9375rem rgba(0, 0, 0, 0.7), 0 0 1.25rem rgba(0, 0, 0, 0.5);
     position: relative;
-    z-index: 5;                                         /* Lo mantiene por encima de la imagen */
-    font-weight: bold;                                  /* Aumentar grosor del texto */
-}               
+    z-index: 5;
+    font-weight: bold;
+}
 
-/* Botón sobre la imagen con efecto visual */
+/* Outfit button */
 .button-outfit {
-    margin-top: 20px;
-    padding: 12px 24px;
-    background-color: rgb(255, 107, 107);
-    color: #FFFFFF;
+    margin-top: 1.25rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
     border: none;
-    border-radius: 8px;
-    font-size: 18px;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
     cursor: pointer;
-    font-family: 'Audiowide';
+    font-family: 'Audiowide', sans-serif;
     position: relative;
     z-index: 5;
     transition: all 0.3s ease-in-out;
     text-decoration: none;
-    /* Efecto de sombra para dar profundidad */
-    box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--shadow-md);
+    will-change: transform;
 }
 
-/* Efecto hover para mejorar la interacción */
 .button-outfit:hover {
-    background-color: rgb(230, 70, 70);
-    transform: translateY(-2px);                        /* Efecto de elevación */
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6);     /* Sombra más grande en hover */
+    background-color: var(--color-primary-hover);
+    transform: translateY(-0.125rem);
+    box-shadow: var(--shadow-lg);
 }
 
-/* Efecto cuando el botón es presionado */
 .button-outfit:active {
-    background-color: rgb(200, 50, 50);
-    transform: translateY(2px);                         /* Simula un efecto de presión */
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.4);       /* Sombra más suave */
+    background-color: var(--color-primary-active);
+    transform: translateY(0.125rem);
+    box-shadow: var(--shadow-sm);
 }
 
-/* ESTILOS DE LA GALERÍA DE IMÁGENES */
+/* Social network section */
+#social-network {
+    margin-top: 3.125rem; /* Same spacing as between nav-bar and index-image */
+}
 
-/* Ajustamos el diseño del contenedor con las imágenes usando grid */
+/* Image gallery */
 .image-gallery {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);              /* 4 columnas de imágenes */
-    grid-gap: 30px;                                     /* Aumentamos el espacio entre los contenedores */
-    width: 100%;                                        /* Aumentamos el ancho de la galería */
-    max-width: 1210px;                                  /* Limitamos el ancho máximo para evitar scroll lateral */
-    height: auto;                                       /* Dejamos que se ajuste según las imágenes */
-    padding: 10px;                                      /* Reducimos padding para ajustar al viewport */
-    justify-items: center;                              /* Centra los contenedores dentro del grid */
-    margin: 20px auto;                                  /* Centrado horizontal con margen superior e inferior */
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 2rem;
+    width: 95%;
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 1.25rem 1.25rem; /* Removed top padding to avoid extra spacing */
 }
 
-/* Estilo para el contenedor de cada imagen */
 .image-container {
-    width: 280px;                                       /* Reducimos el ancho para evitar scroll lateral */
-    height: 430px;                                      /* Ajustamos la altura proporcionalmente */
+    width: 100%;
+    max-width: 17.5rem;
+    height: 26.875rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    
-    border: 2px solid #ccc;                           /* Borde suave para las imágenes */
-    padding: 5px;                                       /* Reduzco el padding para que los contenedores estén más ajustados */
-    border-radius: 10px;
-    background-color: #F5F5F5;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    padding: 0.3125rem;
+    border-radius: 0.625rem;
+    background-color: var(--color-bg);
+    box-shadow: var(--shadow-sm);
     transition: transform 0.3s ease-in-out;
-    box-sizing: border-box;
+    margin: 0 auto;
 }
 
 .image-container img {
-    width: 100%;                                        /* La imagen ocupa el 100% de la altura del contenedor */
-    height: 90%;                                        /* La imagen ocupa el 80% de la altura del contenedor */
-    object-fit: cover;                                  /* Ajustar la imagen sin deformarla */
-    border-radius: 8px;
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 0.5rem;
 }
 
 .like-container {
     display: flex;
-    justify-content: flex-end;                          /* Alineación a la derecha */
+    justify-content: space-between;
     width: 100%;
     align-items: center;
-    margin-top: 5px;                                    /* Reducido el margen superior para el like */
+    margin-top: 0.3125rem;
+}
+
+.comment-button {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-gray);
+    background: none;
+    border: none;
 }
 
 .like-count {
-    font-size: 14px;
-    color: #333;
-    margin-right: 5px;                                  /* Menor espacio entre el contador y el corazón */
+    font-size: 0.875rem;
+    color: var(--color-text);
+    margin-right: 0.3125rem;
 }
 
 .like-button {
-    font-size: 24px;
+    font-size: 1.5rem;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
-    color: #888;                                      /* Corazón gris por defecto */
+    color: var(--color-gray);
+    background: none;
+    border: none;
+    will-change: transform;
 }
 
 .like-button.liked {
-    color: red;                                       /* Corazón rojo cuando tiene like */
+    color: red;
 }
 
 .like-button.animate {
-    animation: heart-pulse 0.5s ease-in-out;    
+    animation: heart-pulse 0.5s ease-in-out;
 }
 
 @keyframes heart-pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.3);
-    }
-    100% {
-        transform: scale(1);
-    }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
 }
 
-/* ESTILOS DE LA BARRA DE BÚSQUEDA */
+/* Search bar */
 .search-bar {
     width: 100%;
-    max-width: 600px;
+    max-width: 37.5rem;
     display: flex;
     align-items: center;
-    margin: 20px auto;
+    margin: 0 auto 3.125rem; /* Added bottom margin to match 3.125rem spacing */
+    background-color: var(--color-bg);
+    border-radius: 1.5625rem;
+    box-shadow: var(--shadow-sm);
     position: relative;
-    background-color: #f5f5f5; /* Fondo gris claro */
-    border-radius: 25px; /* Bordes redondeados */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 .search-bar input {
     width: 100%;
-    padding: 12px 20px 12px 40px; /* Ajustado para el ícono a la izquierda */
-    border: none; /* Sin borde */
-    border-radius: 25px; /* Bordes redondeados */
-    font-size: 16px;
-    font-family: 'Space Grotesk', sans-serif;
+    padding: 0.75rem 2.5rem 0.75rem 1.25rem;
+    border: none;
+    border-radius: 1.5625rem;
+    font-size: 1rem;
     outline: none;
-    background-color: transparent; /* Fondo transparente */
-    color: #333;
+    background-color: transparent;
+    color: var(--color-text);
 }
 
 .search-bar input::placeholder {
-    color: #888; /* Color del placeholder */
+    color: var(--color-gray);
 }
 
 .search-bar .search-icon {
     position: absolute;
-    left: 15px; /* Ícono a la izquierda */
-    font-size: 18px;
+    right: 0.9375rem;
     cursor: pointer;
-    color: #888;
+    color: var(--color-gray);
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 .search-bar .search-icon:hover {
-    color: #333;
+    color: var(--color-text);
+}
+
+.search-bar .search-icon svg {
+    width: 1.125rem;
+    height: 1.125rem;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .image-gallery {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 0.625rem 0.625rem;
+    }
+    .image-container {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 0 0.75rem 0.75rem;
+    }
+}
+
+@media (max-width: 1440px) {
+    .image-gallery {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        padding: 0 1rem 1rem;
+        max-width: 68.75rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    .image-gallery {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 2.5rem;
+        padding: 0 1.25rem 1.25rem;
+        max-width: 87.5rem;
+    }
+}
+
+@media (min-width: 2000px) {
+    .image-gallery {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 3rem;
+        padding: 0 1.5rem 1.5rem;
+        max-width: 100rem;
+    }
 }

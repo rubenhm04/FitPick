@@ -8,18 +8,56 @@ document.addEventListener('DOMContentLoaded', function() {
         { name: 'Vinted', image: 'img/logos/vinted.png', link: 'https://www.vinted.com' }
     ];
 
-    brands.forEach(brand => {
+    function isValidUrl(string) {
+        try {
+            new URL(string);
+            return true;
+        } catch (_) {
+            return false;
+        }
+    }
+
+    function createBrandItem(brand) {
+        if (!isValidUrl(brand.link)) {
+            console.warn(`Invalid URL for ${brand.name}: ${brand.link}`);
+            return null;
+        }
+
         const brandItem = document.createElement('div');
         brandItem.classList.add('brand-item');
-        brandItem.innerHTML = `
-            <img src="${brand.image}" alt="${brand.name} Logo">
-            <div class="brand-name">${brand.name}</div>
-        `;
+        brandItem.setAttribute('role', 'link');
+        brandItem.setAttribute('aria-label', `Visitar ${brand.name}`);
+
+        const img = document.createElement('img');
+        img.src = brand.image;
+        img.alt = `${brand.name} Logo`;
+        img.loading = 'lazy';
+        img.onerror = () => { img.src = 'img/placeholder.jpg'; };
+        brandItem.appendChild(img);
+
+        const brandName = document.createElement('div');
+        brandName.classList.add('brand-name');
+        brandName.textContent = brand.name;
+        brandItem.appendChild(brandName);
+
+        const link = document.createElement('a');
+        link.href = brand.link;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.style.display = 'none'; // Hidden link for accessibility
+        brandItem.appendChild(link);
 
         brandItem.addEventListener('click', function() {
-            window.location.href = brand.link;
+            link.click();
         });
 
-        brandContainer.appendChild(brandItem);
+        return brandItem;
+    }
+
+    brands.forEach(brand => {
+        const brandItem = createBrandItem(brand);
+        if (brandItem) {
+            brandContainer.appendChild(brandItem);
+        }
     });
 });

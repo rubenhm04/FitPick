@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FitPick - MiColección</title>
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +26,7 @@
                 </div>
             </div>
             <div class="dropdown">
-                <a href="miColeccion.html" id="miColeccion-link">MiColección</a>
+                <a href="miColeccion.html" id="miColeccion-link">MiColeccion</a>
                 <div class="submenu" id="submenu-miColeccion">
                     <a href="miColeccion.html" id="submenu-miColeccion-show">Ver MiColección</a>
                     <a href="miColeccion.html" id="submenu-miColeccion-add">Añadir Prenda</a>
@@ -52,7 +54,12 @@
 
     <!-- Botón de cancelar eliminación -->
     <div class="cancel-delete-container" id="cancelDeleteContainer" style="display: none;">
-        <button id="cancelDeleteBtn">Cancelar eliminación</button>
+        <button id="cancelDeleteBtn"><span class="icon">×</span> <span class="text">Cancelar eliminación</span></button>
+    </div>
+
+    <!-- Botón para añadir prenda -->
+    <div class="add-clothing-container" id="addClothingContainer">
+        <button id="addClothingBtn"><span class="icon">+</span> <span class="text">Añadir Prenda</span></button>
     </div>
 
     <!-- Sección de contenidos -->
@@ -70,6 +77,18 @@
                 <button id="btnCapturarFoto" class="btn-capturar">Capturar Foto</button>
                 <button id="btnCancelar" class="btn-cancelar">Cancelar</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Modal para elegir añadir prenda -->
+    <div id="addClothingModal" class="modal add-clothing-modal">
+        <div class="modal-content">
+            <h2>Añadir Prenda</h2>
+            <div class="modal-buttons">
+                <button id="addFromGalleryBtn" class="btn-capturar">Desde Galería</button>
+                <button id="addFromCameraBtn" class="btn-capturar">Desde Cámara</button>
+            </div>
+            <button id="closeModalBtn" class="btn-cancelar">Cerrar</button>
         </div>
     </div>
 

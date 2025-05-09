@@ -6,68 +6,63 @@
 }
 
 html, body {
-    height: 100%; /* Aseguramos que el body ocupe toda la pantalla */
+    height: 100%;
     width: 100%;
 }
 
 body {
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-color: #f5f5f5;
 }
 
-/* Aseguramos que .main ocupe todo el espacio disponible */
+/* Contenedor principal */
 .main {
-    margin-top: 60px;
-    height: calc(100vh - 80px); /* Ocupa el 100% del alto menos la altura de la barra */
+    margin-top: 60px; /* Reduced to bring image-gallery closer to nav bar (~10px gap) */
+    height: calc(100vh - 80px); /* Adjusted for reduced margin */
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    align-items: center; /* Ensure content is centered horizontally */
 }
 
-/* Ajustamos el tamaño de la .image-gallery */
+/* Cuadrícula de imágenes */
 .image-gallery {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columnas de imágenes */
-    grid-gap: 70px; /* Aumentamos aún más el espacio entre los contenedores */
-    width: 90%; /* Ajuste para centrar y dar espacio lateral */
-    height: auto; /* Dejamos que se ajuste según las imágenes */
-    padding: 60px; /* Más padding para simular mayor separación */
-    justify-items: center; /* Centra los contenedores dentro del grid */
-    margin: 20px auto; /* Centrado horizontal y margen superior */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 80px;
+    width: 90%; /* Adjusted to be slightly wider but still responsive */
+    max-width: 1200px; /* Added to prevent excessive stretching on large screens */
+    padding: 80px; /* Uniform padding */
+    margin: 20px auto; /* Retained for centering */
+    justify-content: center; /* Ensure grid items are centered */
 }
 
-/* Estilo para los contenedores de las imágenes */
+/* Contenedores de imágenes */
 .image-container {
-    width: 250px; /* Tamaño ajustado para simular la imagen */
-    height: 250px; /* Alto fijo ajustado */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    width: 250px;
+    height: 250px;
     position: relative;
-
-    border: 3px solid #F5F5F5; /* Borde alrededor del contenedor */
-    border-radius: 10px; /* Bordes redondeados */
+    border: 3px solid #F5F5F5;
+    border-radius: 10px;
     background-color: #ffffff;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Sombra alrededor de cada contenedor */
-    box-sizing: border-box;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transición suave para el hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    z-index: 1; /* Below cancel-delete and add-clothing buttons */
 }
 
 .image-container:hover {
-    transform: scale(1.1); /* Hace un zoom ligero al pasar el mouse */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); /* Aumenta la sombra */
-    border-color: #b0b0b0; /* Cambia el borde al pasar el ratón */
+    transform: scale(1.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border-color: #6D4C41;
+    z-index: 2; /* Still below cancel-delete and add-clothing buttons */
 }
 
-/* Estilo para las imágenes dentro de los contenedores */
 .image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Hace que la imagen cubra todo el contenedor */
+    object-fit: cover;
+    border-radius: 7px;
 }
 
 /* Icono de papelera */
@@ -79,14 +74,21 @@ body {
     font-size: 20px;
     color: red;
     cursor: pointer;
+    opacity: 0.3;
+    transition: opacity 0.2s ease;
 }
 
 .image-container:hover .trash-icon {
-    display: none; /* Ocultar por defecto, se mostrará solo en modo eliminación */
+    display: block;
+}
+
+.trash-icon:hover {
+    opacity: 1;
 }
 
 .image-container.delete-mode .trash-icon {
-    display: block; /* Mostrar en modo eliminación */
+    display: block;
+    opacity: 1;
 }
 
 /* Ventana de confirmación */
@@ -110,6 +112,7 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     text-align: center;
     width: 300px;
+    animation: dialogFadeIn 0.3s ease;
 }
 
 .confirmation-dialog p {
@@ -125,174 +128,253 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-family: 'Space Grotesk', sans-serif;
+    transition: background-color 0.2s ease;
 }
 
 .confirmation-dialog .confirm-btn {
-    background-color: #ff4444;
+    background-color: #6D4C41;
     color: #ffffff;
 }
 
 .confirmation-dialog .confirm-btn:hover {
-    background-color: #cc0000;
+    background-color: #4E342E;
 }
 
 .confirmation-dialog .cancel-btn {
-    background-color: #dddddd;
+    background-color: #e0e0e0;
     color: #333;
 }
 
 .confirmation-dialog .cancel-btn:hover {
-    background-color: #bbbbbb;
+    background-color: #c0c0c0;
 }
 
-/* ESTILOS AÑADIR IMAGEN */
+/* Animación para el diálogo de confirmación */
+@keyframes dialogFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
-/* Menú desplegable */
-.dropdown-menu {
-    position: absolute;
-    background: #FFFFFF;
-    border: 1px solid #ccc;
-    padding: 10px;
+/* Botón de cancelar eliminación */
+.cancel-delete-container {
     display: none;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    position: fixed;
+    bottom: 40px; /* Bottom-left corner */
+    left: 40px;
+    z-index: 100; /* Above image containers */
 }
 
-.dropdown-menu button {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0;
-    border: none;
-    background: #444;
-    color: #FFFFFF;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.dropdown-menu button:hover {
-    background: #666;
-}
-
-/* Estilos del submenú */
-.dropdown-submenu {
-    position: absolute;
-    background: #FFFFFF;
-    border: 1px solid #ccc;
-    padding: 10px;
-    display: none;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    z-index: 1000;
-    min-width: 180px;
-}
-
-/* Galería */
-.image-gallery {
+#cancelDeleteBtn {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
+    align-items: center;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid #b5895f;
+    border-radius: 8px;
+    background-color: #d4a373;
+    color: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Consolidated smooth transition */
+    gap: 8px;
 }
 
-.gallery-item {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 5px;
+#cancelDeleteBtn .icon {
+    font-size: 20px;
+    line-height: 1;
+    vertical-align: middle;
 }
 
-/* Cámara */
-.camera-overlay {
+#cancelDeleteBtn .text {
+    display: inline;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out; /* Smooth text fade */
+}
+
+#cancelDeleteBtn.compressed {
+    padding: 12px;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+}
+
+#cancelDeleteBtn.compressed .text {
+    display: none;
+    opacity: 0;
+}
+
+#cancelDeleteBtn:hover {
+    background-color: #b5895f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 12px 20px;
+    width: auto;
+}
+
+#cancelDeleteBtn:hover .text {
+    display: inline;
+    opacity: 1;
+}
+
+/* Botón para añadir prenda */
+.add-clothing-container {
+    position: fixed;
+    bottom: 40px; /* Increased margin */
+    right: 40px;
+    z-index: 100; /* Above image containers */
+}
+
+#addClothingBtn {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid #b5895f;
+    border-radius: 8px;
+    background-color: #d4a373;
+    color: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
+    gap: 8px;
+}
+
+#addClothingBtn .icon {
+    font-size: 20px;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+#addClothingBtn .text {
+    display: inline;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out; /* Smooth text fade */
+}
+
+#addClothingBtn.compressed {
+    padding: 12px;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+}
+
+#addClothingBtn.compressed .text {
+    display: none;
+    opacity: 0;
+}
+
+#addClothingBtn:hover {
+    background-color: #b5895f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 12px 20px;
+    width: auto;
+}
+
+#addClothingBtn:hover .text {
+    display: inline;
+    opacity: 1;
+}
+
+.add-clothing-container.delete-mode {
+    display: none; /* Hide in delete mode */
+}
+
+/* Modal para añadir prenda */
+.add-clothing-modal {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 1000;
 }
 
-.camera-overlay video {
-    width: 80%;
-    max-width: 500px;
-    border: 2px solid #FFFFFF;
+.add-clothing-modal .modal-content {
+    background: #ffffff;
+    padding: 20px;
     border-radius: 10px;
-}
-
-.camera-overlay button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    background: #FFFFFF;
-    color: #000000;
-    font-size: 16px;
-    border-radius: 5px;
-}
-
-.camera-overlay button:hover {
-    background: #ddd;
-}
-
-/* Estilos para el botón de cancelar eliminación */
-.cancel-delete-container {
-    width: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     text-align: center;
+    width: 300px;
+    animation: dialogFadeIn 0.3s ease;
 }
 
-#cancelDeleteBtn {
-    padding: 8px 20px;
-    margin-top: 100px;
-    border: none;
-    border-radius: 5px;
-    background-color: #d4a373;
-    color: #ffffff;
+.add-clothing-modal h2 {
+    margin-bottom: 20px;
+    color: #333;
     font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+}
+
+.add-clothing-modal .modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.add-clothing-modal .btn-capturar {
+    background-color: #6D4C41;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
     font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-#cancelDeleteBtn:hover {
-    background-color: #d4a373;
+.add-clothing-modal .btn-capturar:hover {
+    background-color: #4E342E;
 }
 
+.add-clothing-modal .btn-cancelar {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+}
 
+.add-clothing-modal .btn-cancelar:hover {
+    background-color: #c0c0c0;
+}
 
-
-
-
-
-/* Estilos del Modal para capturar la foto */
+/* Modal para capturar la foto */
 .modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro con opacidad */
-    display: none;  /* Oculto por defecto */
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
     justify-content: center;
     align-items: center;
-    z-index: 1000;  /* Asegura que el modal esté por encima de otros elementos */
+    z-index: 1000;
 }
 
-/* Contenedor del contenido del modal */
 .modal-content {
     background-color: #fff;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    width: 80%;  /* Ajustamos el tamaño */
+    width: 80%;
     max-width: 500px;
     position: relative;
 }
 
-/* Estilo para el video */
 #videoCamara {
     border-radius: 10px;
     background-color: #f2f2f2;
@@ -301,16 +383,14 @@ body {
     object-fit: cover;
 }
 
-/* Estilos de los botones */
 .modal-buttons {
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
 }
 
-/* Botón Capturar Foto */
 .btn-capturar {
-    background-color: #6D4C41;  /* Color marrón suave */
+    background-color: #6D4C41;
     color: white;
     border: none;
     padding: 12px 25px;
@@ -321,5 +401,119 @@ body {
 }
 
 .btn-capturar:hover {
-    background-color: #4E342E;  /* Color marrón más oscuro en hover */
+    background-color: #4E342E;
+}
+
+.btn-cancelar {
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cancelar:hover {
+    background-color: #c0c0c0;
+}
+
+/* Media queries para responsividad */
+
+/* Pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .main {
+        margin-top: 55px; /* Reduced for smaller screens */
+        height: calc(100vh - 75px); /* Adjusted for reduced margin */
+    }
+    .image-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        padding: 30px; /* Uniform padding */
+        width: 95%; /* Adjusted for better fit */
+    }
+    .cancel-delete-container {
+        bottom: 30px; /* Reduced for smaller screens */
+        left: 30px;
+    }
+    .add-clothing-container {
+        bottom: 30px; /* Reduced for smaller screens */
+        right: 30px;
+    }
+    #addClothingBtn, #cancelDeleteBtn {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+    #addClothingBtn.compressed, #cancelDeleteBtn.compressed {
+        padding: 10px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main {
+        margin-top: 50px; /* Further reduced for very small screens */
+        height: calc(100vh - 70px); /* Adjusted for reduced margin */
+    }
+    .image-gallery {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 15px; /* Uniform padding */
+        width: 95%; /* Adjusted for better fit */
+    }
+    .cancel-delete-container {
+        bottom: 25px; /* Further reduced for very small screens */
+        left: 25px;
+    }
+    .add-clothing-container {
+        bottom: 25px; /* Further reduced for very small screens */
+        right: 25px;
+    }
+    #addClothingBtn, #cancelDeleteBtn {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+    #addClothingBtn.compressed, #cancelDeleteBtn.compressed {
+        padding: 8px;
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* Pantallas medianas (como 14 pulgadas, ~1366px) */
+@media (max-width: 1440px) {
+    .image-gallery {
+        grid-template-columns: repeat(4, 1fr); /* Keep 4 columns for 14-inch screens */
+        width: 95%; /* Ensure it takes almost full width */
+        max-width: 1100px; /* Slightly reduced to prevent crowding */
+        padding: 30px; /* Uniform padding */
+        gap: 60px; /* Reduced gap to fit 4 columns comfortably */
+    }
+    .cancel-delete-container {
+        bottom: 40px; /* Consistent with main positioning */
+        left: 40px;
+    }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1600px) {
+    .image-gallery {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 60px;
+        padding: 60px; /* Uniform padding */
+        width: 90%;
+        max-width: 1400px;
+    }
+}
+
+@media (min-width: 2000px) {
+    .image-gallery {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 60px;
+        padding: 60px; /* Uniform padding */
+        width: 90%;
+        max-width: 1600px;
+    }
 }
