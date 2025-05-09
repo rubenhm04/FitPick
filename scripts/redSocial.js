@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Ruta de la carpeta donde se almacenan las imágenes
+    // List of images
     const imageFolder = 'img/Monigotes/';
-    
-    // Lista de imágenes de la carpeta 'img/Monigotes'
     const images = [
         'Monigote1.jpeg', 'Monigote2.jpeg', 'Monigote3.jpeg',
         'Monigote4.jpeg', 'Monigote5.jpeg', 'Monigote6.jpeg',
@@ -17,10 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
         'Monigote31.jpeg', 'Monigote32.jpeg', 'Monigote33.jpeg'
     ];
 
-    // Función para seleccionar 14 imágenes aleatorias
+    // Function to select 12 random images
     function getRandomImages() {
         let selectedImages = [];
-        while (selectedImages.length < 14) {
+        while (selectedImages.length < 12) {
             const randomIndex = Math.floor(Math.random() * images.length);
             if (!selectedImages.includes(images[randomIndex])) {
                 selectedImages.push(images[randomIndex]);
@@ -29,60 +27,54 @@ document.addEventListener('DOMContentLoaded', function() {
         return selectedImages;
     }
 
-    // Función para obtener un valor aleatorio de likes entre 100 y 2500
+    // Function to get random likes between 50 and 100
     function getRandomLikes() {
-        return Math.floor(Math.random() * (2500 - 100 + 1)) + 100;
+        return Math.floor(Math.random() * (100 - 50 + 1)) + 50;
     }
 
-    // Función para crear el HTML de cada imagen
+    // Function to create each image item
     function createImageItem(image) {
         const imageContainer = document.createElement('div');
         imageContainer.classList.add('image-container');
 
-        // Crear la imagen
         const img = document.createElement('img');
         img.src = `${imageFolder}${image}`;
         imageContainer.appendChild(img);
 
-        // Crear el contenedor de like y el contador
         const likeContainer = document.createElement('div');
         likeContainer.classList.add('like-container');
-        
-        // Inicializar el contador de likes aleatorio
+
         const initialLikes = getRandomLikes();
-        
-        likeContainer.innerHTML = `   
-            <span class="like-count">${initialLikes} Me Gusta</span>
-            <span class="like-button" data-liked="false" data-count="${initialLikes}">🤍</span>
+        likeContainer.innerHTML = `
+            <span class="comment-button">💬</span>
+            <div>
+                <span class="like-count">${initialLikes} Me Gusta</span>
+                <span class="like-button" data-liked="false" data-count="${initialLikes}">🤍</span>
+            </div>
         `;
 
-        // Obtener elementos
         const likeCount = likeContainer.querySelector('.like-count');
         const likeButton = likeContainer.querySelector('.like-button');
 
-        // Función para animar el corazón
         function animateHeart() {
-            likeButton.classList.remove('animate');  // Eliminar la animación
-            void likeButton.offsetWidth;             // Forzar el reflujo para reiniciar la animación
-            likeButton.classList.add('animate');     // Volver a añadir la clase de animación
+            likeButton.classList.remove('animate');
+            void likeButton.offsetWidth;
+            likeButton.classList.add('animate');
         }
 
-        // Acción al dar like
         likeButton.addEventListener('click', function() {
             const isLiked = likeButton.dataset.liked === 'true';
             let count = parseInt(likeButton.dataset.count);
 
             if (isLiked) {
-                // Quitar el "Me Gusta"
                 likeButton.classList.remove('liked');
                 likeButton.dataset.liked = 'false';
-                likeButton.innerHTML = '🤍'; // Corazón outline
+                likeButton.innerHTML = '🤍';
                 count -= 1;
             } else {
-                // Añadir el "Me Gusta"
                 likeButton.classList.add('liked');
-                likeButton.innerHTML = '❤️'; // Corazón lleno
-                animateHeart(); // Animar el corazón
+                likeButton.innerHTML = '❤️';
+                animateHeart();
                 likeButton.dataset.liked = 'true';
                 count += 1;
             }
@@ -95,31 +87,19 @@ document.addEventListener('DOMContentLoaded', function() {
         return imageContainer;
     }
 
-    // Obtener el contenedor donde se mostrarán las imágenes
+    // Populate the image gallery with random images
     const imageGallery = document.querySelector('.image-gallery');
-
-    // Limpiar la galería antes de agregar nuevas imágenes
     imageGallery.innerHTML = '';
-
-    // Obtener las imágenes aleatorias
     const randomImages = getRandomImages();
-
-    // Crear y agregar las imágenes al contenedor
     randomImages.forEach(image => {
         const imageContainer = createImageItem(image);
         imageGallery.appendChild(imageContainer);
     });
 
-    // Funcionalidad de la barra de búsqueda
+    // Search functionality
     const searchInput = document.getElementById('search-input');
     const searchIcon = document.querySelector('.search-icon');
 
-    // Habilitar el input al hacer clic
-    searchInput.addEventListener('click', function() {
-        this.focus();
-    });
-
-    // Redirigir al presionar la lupa o Enter
     searchIcon.addEventListener('click', function() {
         window.location.href = 'redSocialPerfil.html';
     });

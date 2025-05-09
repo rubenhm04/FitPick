@@ -90,16 +90,17 @@ html, body {
     grid-template-columns: repeat(4, 1fr);              /* 4 columnas de imágenes */
     grid-gap: 30px;                                     /* Aumentamos el espacio entre los contenedores */
     width: 100%;                                        /* Aumentamos el ancho de la galería */
+    max-width: 1210px;                                  /* Limitamos el ancho máximo para evitar scroll lateral */
     height: auto;                                       /* Dejamos que se ajuste según las imágenes */
-    padding: 20px;                                      /* Añadimos padding a los lados */
+    padding: 10px;                                      /* Reducimos padding para ajustar al viewport */
     justify-items: center;                              /* Centra los contenedores dentro del grid */
-    margin-top: 50px;
+    margin: 20px auto;                                  /* Centrado horizontal con margen superior e inferior */
 }
 
 /* Estilo para el contenedor de cada imagen */
 .image-container {
-    width: 325px;                                       /* Ancho fijo para cada contenedor */
-    height: 500px;                                      /* Alto fijo para cada contenedor */
+    width: 280px;                                       /* Reducimos el ancho para evitar scroll lateral */
+    height: 430px;                                      /* Ajustamos la altura proporcionalmente */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -123,7 +124,7 @@ html, body {
 
 .like-container {
     display: flex;
-    justify-content:last baseline;                      /* Alineación a la izquierda */
+    justify-content: flex-end;                          /* Alineación a la derecha */
     width: 100%;
     align-items: center;
     margin-top: 5px;                                    /* Reducido el margen superior para el like */
@@ -160,4 +161,45 @@ html, body {
     100% {
         transform: scale(1);
     }
+}
+
+/* ESTILOS DE LA BARRA DE BÚSQUEDA */
+.search-bar {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    margin: 20px auto;
+    position: relative;
+    background-color: #f5f5f5; /* Fondo gris claro */
+    border-radius: 25px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 20px 12px 40px; /* Ajustado para el ícono a la izquierda */
+    border: none; /* Sin borde */
+    border-radius: 25px; /* Bordes redondeados */
+    font-size: 16px;
+    font-family: 'Space Grotesk', sans-serif;
+    outline: none;
+    background-color: transparent; /* Fondo transparente */
+    color: #333;
+}
+
+.search-bar input::placeholder {
+    color: #888; /* Color del placeholder */
+}
+
+.search-bar .search-icon {
+    position: absolute;
+    left: 15px; /* Ícono a la izquierda */
+    font-size: 18px;
+    cursor: pointer;
+    color: #888;
+}
+
+.search-bar .search-icon:hover {
+    color: #333;
 }

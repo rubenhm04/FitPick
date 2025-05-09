@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargando Outfit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .loading {
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading">Generando tu outfit...</div>
+    <script>
+        // Redirigir automáticamente a mostrarOutfit-FotoFinal.html después de 2 segundos
+        setTimeout(function() {
+            window.location.href = 'mostrarOutfit-FotoFinal.html';
+        }, 2000);
+    </script>
+</body>
+</html>

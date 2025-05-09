@@ -75,7 +75,7 @@
 .submenu {
     visibility: hidden;                           /* Submenú sigue oculto al principio */
     opacity: 0;                                   /* Submenú empieza completamente transparente */
-    transition: opacity 2s ease-in-out, visibility 0s linear 2s;  /* Hace que la opacidad cambie suavemente */
+    transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;  /* Hacemos que la opacidad cambie rápidamente */
     position: absolute;
     top: 100%;                                    /* Justo debajo de la barra de navegación */
     left: 0;                                      /* Alineado a la izquierda con respecto al enlace activador */
@@ -111,9 +111,10 @@
 .submenu:not(:hover) {
     opacity: 0;                                   /* Hace que el submenú se desvanezca */
     visibility: hidden;                           /* Lo oculta */
-    transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;  /* Añadimos un retraso antes de que desaparezca */
+    transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;  /* Desvanecimiento rápido */
 }
 
+/* Estilo de los enlaces del submenú */
 .submenu a {
     display: block;                               /* Los enlaces se apilan verticalmente */
     color: #000000;
@@ -133,3 +134,44 @@
 .submenu a::after {
     content: none;                                /* Eliminar el pseudo-elemento ::after para que no aparezca subrayado */
 }
+
+/* Agregar los botones de "Añadir desde Cámara" y "Añadir desde Galería" solo cuando se pase el ratón sobre "Añadir Prenda" */
+#submenu-miColeccion-add:hover + .submenu-miColeccion-extra,
+#submenu-miColeccion-add:focus + .submenu-miColeccion-extra,
+.submenu-miColeccion-extra:hover {
+    display: block;                               /* Muestra los botones cuando se pasa el ratón o se hace clic en "Añadir Prenda" */
+    visibility: visible;                          /* Asegura que los botones se mantengan visibles */
+    opacity: 1;                                   /* Los botones tendrán opacidad 1 */
+}
+
+/* Inicialmente ocultar los botones extra */
+.submenu-miColeccion-extra {
+    display: none;                                /* Los botones están ocultos por defecto */
+    visibility: hidden;
+    opacity: 0;                                   /* Los botones comienzan invisibles */
+    transition: opacity 0.3s ease-in-out;         /* Transición suave para opacidad */
+    padding-left: 30px;             /* desplazamiento del texto 'Añadir desde galeria / camara' */
+}
+
+/* Estilo de los botones adicionales */
+.submenu-miColeccion-extra a {
+    display: block;                               /* Los enlaces se apilan verticalmente */
+    color: #000000;
+    padding: 8px 12px;
+    text-decoration: none;
+    position: relative;
+    margin: 5px 0;                                /* Espaciado entre los enlaces */
+    transition: background-color 0.3s ease;       /* Suaviza el cambio de fondo al hacer hover */
+    font-family: 'Saira';
+}
+
+.submenu-miColeccion-extra a:hover {
+    background-color: #ddd;                     /* Fondo sombreado */
+    color: rgb(0, 0, 0);                        /* Color del texto al hacer hover */
+}
+
+.submenu-miColeccion-extra a::after {
+    content: none;                                /* Eliminar el pseudo-elemento ::after para que no aparezca subrayado */
+}
+
+

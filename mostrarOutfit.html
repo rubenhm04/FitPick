@@ -26,10 +26,13 @@
             <div class="dropdown">
                 <a href="miColeccion.html" id="miColeccion-link">MiColección</a>
                 <div class="submenu" id="submenu-miColeccion">
-                    <a href="miColeccion.html" id="submenu-miColeccion-show">Ver MiColeccion</a>
+                    <a href="miColeccion.html" id="submenu-miColeccion-show">Ver MiColección</a>
                     <a href="miColeccion.html" id="submenu-miColeccion-add">Añadir Prenda</a>
+                    <div class="submenu-miColeccion-extra" id="submenu-miColeccion-extra">
+                        <a href="miColeccion.html" id="submenu-miColeccion-anaidirDeGaleria">Añadir desde Galería</a>
+                        <a href="miColeccion.html" id="submenu-miColeccion-anaidirDeCamara">Añadir desde Cámara</a>
+                    </div>
                     <a href="miColeccion.html" id="submenu-miColeccion-delete">Eliminar Prenda</a>
-                    <a href="miColeccion.html" id="submenu-miColeccion-organize">Organizar</a>
                 </div>
             </div>
         </div>
@@ -38,10 +41,10 @@
         </div>
         <div class="nav-links">
             <div class="dropdown">
-                <a href="usuario.html" target="_blank" id="usuario">Adriana</a>
+                <a href="confGeneral.html" target="_blank" id="usuario">Adriana</a>
                 <div class="submenu" id="submenu-Usuario">
-                    <a href="usuario.html" id="submenu-usuario-config">Configuración</a>
-                    <a href="usuario.html" id="submenu-usuario-cerrarSesion">Cerrar Sesión</a>
+                    <a href="confGeneral.html" id="submenu-usuario-config">Configuración</a>
+                    <a href="confGeneral.html" id="submenu-usuario-cerrarSesion">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
@@ -52,17 +55,16 @@
             
         <label for="outfit-type">Selecciona cómo deseas generar tu outfit:</label>
         <select id="outfit-type">
-            <option value="automatic">Hacerlo automáticamente</option>
-            <option value="questions">Hacerlo con preguntas</option>
+            <option value="automatic">Generarlo automáticamente</option>
+            <option value="questions">Generarlo por preguntas</option>
         </select>
             
         <div id="automatic-outfit" class="outfit-display">
-            <button id="auto-button">Generar Outfit Automático</button>
+            <button id="auto-button">Generar Outfit</button>
             <div id="outfit-image" class="outfit-image"></div>
         </div>
     
         <div id="questions-outfit" class="outfit-display">
-            <button id="questions-button">Generar Outfit con Preguntas</button>
             <div id="questions-form" class="questions-form">
                 <label for="occasion">¿Para qué es?</label>
                 <select id="occasion">
@@ -71,11 +73,6 @@
                 </select>
                 <label for="weather">¿Hace buen tiempo?</label>
                 <select id="weather">
-                    <option value="yes">Sí</option>
-                    <option value="no">No</option>
-                </select>
-                <label for="mood">¿Es un plan formal?</label>
-                <select id="mood">
                     <option value="yes">Sí</option>
                     <option value="no">No</option>
                 </select>

@@ -1,8 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Ruta de la carpeta donde se almacenan las imágenes
+document.addEventListener('DOMContentLoaded', function () {
     const imageFolder = 'img/ropa/';
-    
-    // Array de imágenes disponibles
     const images = [
         'ropa1.jpg', 'ropa2.jpg', 'ropa3.jpg', 'ropa4.jpg', 'ropa5.jpg',
         'ropa6.jpg', 'ropa7.jpg', 'ropa8.jpg', 'ropa9.jpg', 'ropa10.jpg',
@@ -10,65 +7,94 @@ document.addEventListener('DOMContentLoaded', function() {
         'ropa16.jpg', 'ropa17.jpg', 'ropa18.jpg', 'ropa19.jpg', 'ropa20.jpg',
         'ropa21.jpg',
     ];
+    const selectedImages = images.slice(0, 10);
+    const imageGallery = document.querySelector('.image-gallery');
+    const cancelDeleteContainer = document.getElementById("cancelDeleteContainer");
+    const cancelDeleteButton = document.getElementById("cancelDeleteBtn");
 
-    // Función para seleccionar 10 imágenes aleatorias
-    function getRandomImages() {
-        let selectedImages = [];
-        while (selectedImages.length < 10) {
-            const randomIndex = Math.floor(Math.random() * images.length);
-            if (!selectedImages.includes(images[randomIndex])) {
-                selectedImages.push(images[randomIndex]);
-            }
-        }
-        return selectedImages;
-    }
+    let deleteMode = false;
 
-    // Función para crear el HTML de cada imagen
-    function createImageItem(image) {
+    imageGallery.innerHTML = '';
+
+    function createImageItem(imageSrc) {
         const imageContainer = document.createElement('div');
         imageContainer.classList.add('image-container');
-    
-        // Crear la imagen
+
         const img = document.createElement('img');
-        img.src = `${imageFolder}${image}`;
-        
-        // Insertar la imagen dentro del contenedor
+        img.src = `${imageSrc}`;
+
+        const trashIcon = document.createElement('span');
+        trashIcon.classList.add('trash-icon');
+        trashIcon.innerHTML = '🗑️';
+        trashIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showConfirmationDialog(imageContainer);
+        });
+
         imageContainer.appendChild(img);
+        imageContainer.appendChild(trashIcon);
         return imageContainer;
     }
 
-    // Obtener el contenedor donde se mostrarán las imágenes
-    const imageGallery = document.querySelector('.image-gallery');
-
-    // Limpiar la galería antes de agregar nuevas imágenes
-    imageGallery.innerHTML = '';
-
-    // Obtener las imágenes aleatorias
-    const randomImages = getRandomImages();
-
-    // Crear y agregar las imágenes al contenedor
-    randomImages.forEach(image => {
-        const imageContainer = createImageItem(image);
-        imageGallery.appendChild(imageContainer);
+    selectedImages.forEach(image => {
+        const container = createImageItem(`${imageFolder}${image}`);
+        imageGallery.appendChild(container);
     });
-});
 
-// AGREGAR IMAGEN
-document.addEventListener("DOMContentLoaded", () => {
+    function addImageToGallery(imageSrc) {
+        const container = createImageItem(imageSrc);
+        imageGallery.appendChild(container);
+        if (deleteMode) {
+            container.classList.add('delete-mode');
+        }
+    }
+
+    function showConfirmationDialog(imageContainer) {
+        const overlay = document.createElement('div');
+        overlay.classList.add('confirmation-overlay');
+        overlay.style.display = 'flex';
+
+        const dialog = document.createElement('div');
+        dialog.classList.add('confirmation-dialog');
+        dialog.innerHTML = `
+            <p>¿Seguro que quieres eliminar esta prenda?</p>
+            <button class="confirm-btn">Sí</button>
+            <button class="cancel-btn">No</button>
+        `;
+
+        overlay.appendChild(dialog);
+        document.body.appendChild(overlay);
+
+        dialog.querySelector('.confirm-btn').addEventListener('click', () => {
+            imageContainer.remove();
+            overlay.remove();
+        });
+
+        dialog.querySelector('.cancel-btn').addEventListener('click', () => {
+            overlay.remove();
+        });
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                overlay.remove();
+            }
+        });
+    }
+
     const addClothingButton = document.getElementById("submenu-miColeccion-add");
+    const deleteClothingButton = document.getElementById("submenu-miColeccion-delete");
     const gallery = document.getElementById("gallery");
 
-    // Crear menú desplegable para elegir fuente de imagen
+    // Menú para añadir prenda
     const dropdownMenu = document.createElement("div");
     dropdownMenu.classList.add("dropdown-menu");
     dropdownMenu.innerHTML = `
         <button id="choose-gallery">Añadir desde Galería</button>
         <button id="choose-camera">Añadir desde Cámara</button>
     `;
-    dropdownMenu.style.display = "none"; // Ocultar por defecto
+    dropdownMenu.style.display = "none";
     document.body.appendChild(dropdownMenu);
 
-    // Mostrar menú desplegable al hacer clic en "Añadir Prenda"
     addClothingButton.addEventListener("click", (event) => {
         event.preventDefault();
         dropdownMenu.style.display = "block";
@@ -77,21 +103,18 @@ document.addEventListener("DOMContentLoaded", () => {
         dropdownMenu.style.top = `${event.pageY}px`;
     });
 
-    // Ocultar el menú si se hace clic fuera de él
     document.addEventListener("click", (event) => {
         if (!dropdownMenu.contains(event.target) && event.target !== addClothingButton) {
             dropdownMenu.style.display = "none";
         }
     });
 
-    // Crear un input oculto para seleccionar imagen desde la galería
     const fileInput = document.createElement("input");
     fileInput.type = "file";
     fileInput.accept = "image/*";
     fileInput.style.display = "none";
     document.body.appendChild(fileInput);
 
-    // Manejar selección de imagen desde la galería
     document.getElementById("choose-gallery").addEventListener("click", () => {
         fileInput.click();
     });
@@ -108,7 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
         dropdownMenu.style.display = "none";
     });
 
-    // Manejar la captura de imagen con la cámara
     document.getElementById("choose-camera").addEventListener("click", async () => {
         try {
             const stream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -116,7 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
             video.srcObject = stream;
             video.play();
 
-            // Crear interfaz para la cámara
             const cameraOverlay = document.createElement("div");
             cameraOverlay.classList.add("camera-overlay");
             cameraOverlay.innerHTML = `
@@ -127,7 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
             document.body.appendChild(cameraOverlay);
             cameraOverlay.querySelector("video").srcObject = stream;
 
-            // Capturar la imagen cuando se presiona el botón
             document.getElementById("capture-photo").addEventListener("click", () => {
                 const canvas = document.createElement("canvas");
                 const ctx = canvas.getContext("2d");
@@ -136,13 +156,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
                 addImageToGallery(canvas.toDataURL("image/png"));
-                stream.getTracks().forEach(track => track.stop()); // Detener la cámara
+                stream.getTracks().forEach(track => track.stop());
                 cameraOverlay.remove();
             });
 
-            // Cerrar la cámara sin capturar
             document.getElementById("close-camera").addEventListener("click", () => {
-                stream.getTracks().forEach(track => track.stop()); // Detener la cámara
+                stream.getTracks().forEach(track => track.stop());
                 cameraOverlay.remove();
             });
 
@@ -152,19 +171,153 @@ document.addEventListener("DOMContentLoaded", () => {
         dropdownMenu.style.display = "none";
     });
 
-    // Función para agregar imágenes a la galería con el mismo formato
-    function addImageToGallery(imageSrc) {
-        // Crear contenedor de imagen con la misma estructura que el CSS
-        const imageContainer = document.createElement("div");
-        imageContainer.classList.add("image-container");
+    // Activar modo eliminación
+    deleteClothingButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        deleteMode = true;
 
-        // Crear imagen y aplicarle el mismo formato
-        const imgElement = document.createElement("img");
-        imgElement.src = imageSrc;
-        imgElement.alt = "Nueva prenda";
+        const containers = document.querySelectorAll(".image-container");
+        containers.forEach(container => container.classList.add("delete-mode"));
 
-        // Agregar imagen dentro del contenedor y luego a la galería
-        imageContainer.appendChild(imgElement);
-        gallery.appendChild(imageContainer);
+        cancelDeleteContainer.style.display = "block";
+    });
+
+    // Cancelar modo eliminación
+    cancelDeleteButton.addEventListener("click", () => {
+        deleteMode = false;
+
+        const containers = document.querySelectorAll(".image-container");
+        containers.forEach(container => container.classList.remove("delete-mode"));
+
+        cancelDeleteContainer.style.display = "none";
+    });
+});
+
+// AÑADIR IMAGEN DESDE LA CAMARA
+// Obtener los elementos del DOM
+const btnAñadirCamara = document.getElementById('submenu-miColeccion-anaidirDeCamara');
+const videoCamara = document.getElementById('videoCamara');
+const btnCapturarFoto = document.getElementById('btnCapturarFoto');
+const btnCancelar = document.getElementById('btnCancelar');
+const modalCamara = document.getElementById('modalCamara');
+const canvas = document.getElementById('canvas');
+
+// Mostrar el modal y activar la cámara
+btnAñadirCamara.addEventListener('click', function(event) {
+    event.preventDefault();
+    modalCamara.style.display = 'flex';  // Mostrar el modal
+
+    // Acceder a la cámara del dispositivo
+    if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                // Mostrar el flujo de video en el contenedor <video>
+                videoCamara.srcObject = stream;
+            })
+            .catch(function(err) {
+                alert("Error al acceder a la cámara: " + err);
+            });
+    } else {
+        alert("La cámara no está disponible en este navegador.");
+    }
+});
+
+// Capturar la foto cuando el usuario haga clic en "Capturar Foto"
+btnCapturarFoto.addEventListener('click', function() {
+    // Crear un contexto en el canvas para dibujar la imagen
+    const ctx = canvas.getContext('2d');
+
+    // Establecer el tamaño del canvas igual al tamaño del video
+    canvas.width = videoCamara.videoWidth;
+    canvas.height = videoCamara.videoHeight;
+
+    // Dibujar el cuadro del video en el canvas
+    ctx.drawImage(videoCamara, 0, 0, canvas.width, canvas.height);
+
+    // Convertir la imagen del canvas en un URL de imagen
+    const imgData = canvas.toDataURL('image/png');
+
+    // Crear un contenedor para la imagen
+    const container = document.createElement('div');
+    container.classList.add('image-container');  // Aplicamos la clase del contenedor
+
+    // Crear un elemento de imagen y asignarle la fuente
+    const imgElement = document.createElement('img');
+    imgElement.src = imgData;
+    imgElement.alt = "Imagen capturada";
+
+    // Añadir la imagen al contenedor
+    container.appendChild(imgElement);
+
+    // Añadir el contenedor con la imagen a la galería
+    document.getElementById('gallery').appendChild(container);
+
+    // Detener la transmisión del video (no seguirá utilizando la cámara)
+    let stream = videoCamara.srcObject;
+    let tracks = stream.getTracks();
+    tracks.forEach(function(track) {
+        track.stop();
+    });
+
+    videoCamara.srcObject = null;  // Detenemos la transmisión del video
+
+    // Cerrar el modal
+    modalCamara.style.display = 'none';
+});
+
+// Cancelar la captura y cerrar el modal
+btnCancelar.addEventListener('click', function() {
+    // Detener la transmisión del video y cerrar el modal
+    let stream = videoCamara.srcObject;
+    let tracks = stream.getTracks();
+    tracks.forEach(function(track) {
+        track.stop();
+    });
+
+    videoCamara.srcObject = null;
+    modalCamara.style.display = 'none';
+});
+
+// AÑADIR IMAGEN DESDE GALERIA
+
+// Obtener el enlace y el input de tipo file
+const inputGaleria = document.getElementById('inputGaleria');
+const btnAñadirGaleria = document.getElementById('submenu-miColeccion-anaidirDeGaleria');
+
+// Event listener para abrir el selector de archivos cuando se hace clic en "Añadir desde Galería"
+btnAñadirGaleria.addEventListener('click', function(event) {
+    event.preventDefault();  // Evitar que el enlace haga su acción predeterminada
+    inputGaleria.click();    // Abrir el explorador de archivos
+});
+
+// Event listener para manejar el archivo seleccionado
+inputGaleria.addEventListener('change', function(event) {
+    const archivo = event.target.files[0];  // Obtener el archivo seleccionado
+
+    if (archivo) {
+        // Aquí puedes hacer lo que necesites con el archivo, por ejemplo:
+        console.log("Imagen seleccionada:", archivo.name);
+
+        // Si deseas mostrar la imagen seleccionada:
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            // Crear un contenedor para la imagen
+            const container = document.createElement('div');
+            container.classList.add('image-container');  // Aplicamos la clase del contenedor
+
+            // Crear un elemento de imagen y asignarle la fuente
+            const imgElement = document.createElement('img');
+            imgElement.src = e.target.result;
+            imgElement.alt = archivo.name;
+
+            // Añadir la imagen al contenedor
+            container.appendChild(imgElement);
+
+            // Añadir el contenedor con la imagen a la galería
+            document.getElementById('gallery').appendChild(container);
+        };
+        reader.readAsDataURL(archivo);  // Leer el archivo como URL de imagen
+
+        // Aquí puedes agregar lógica para guardar la imagen, por ejemplo, enviarla al servidor.
     }
 });

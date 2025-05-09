@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitPick - MiColección</title>
+    <title>FitPick - Outfit Final</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Michroma&family=Saira:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <!-- StyleSheet -->
-    <link rel="stylesheet" href="styles/miColeccion.css">
+    <link rel="stylesheet" href="styles/mostrarOutfit-FotoFinal.css">
     <link rel="stylesheet" href="styles/nav-bar.css">
 </head>
 <body>
@@ -50,36 +50,14 @@
         </div>
     </nav>
 
-    <!-- Botón de cancelar eliminación -->
-    <div class="cancel-delete-container" id="cancelDeleteContainer" style="display: none;">
-        <button id="cancelDeleteBtn">Cancelar eliminación</button>
-    </div>
-
-    <!-- Sección de contenidos -->
-    <section class="main">
-        <div class="image-gallery" id="gallery">
-            <!-- Aquí se cargan las imágenes dinámicamente -->
-        </div>
-    </section>
-
-    <!-- Modal para tomar la foto -->
-    <div id="modalCamara" class="modal">
-        <div class="modal-content">
-            <video id="videoCamara" autoplay></video>
-            <div class="modal-buttons">
-                <button id="btnCapturarFoto" class="btn-capturar">Capturar Foto</button>
-                <button id="btnCancelar" class="btn-cancelar">Cancelar</button>
-            </div>
+    <div class="container">
+        <div class="outfit-display">
+            <img src="img/Monigotes/Monigote2.jpeg" alt="Outfit basado en preguntas">
+            <p>Este outfit es la elección perfecta para la ocasión, destacando por su equilibrio y armonía. Cada prenda ha sido cuidadosamente seleccionada para complementar a la perfección, creando un conjunto que transmite elegancia y estilo sin esfuerzo. Los colores y las texturas se combinan de manera fluida, ofreciendo una apariencia sofisticada y a la vez relajada.</p>
         </div>
     </div>
-
-    <!-- Para permitir que el usuario seleccione un archivo desde la galería -->
-    <input type="file" id="inputGaleria" style="display:none" accept="image/*">
-
-    <!-- Canvas oculto para capturar la imagen -->
-    <canvas id="canvas" style="display: none;"></canvas>
 
     <!-- Funcionalidad JavaScript -->
-    <script src="scripts/miColeccion.js"></script>
+    <script src="scripts/mostrarOutfit-FotoFinal.js"></script>
 </body>
 </html>

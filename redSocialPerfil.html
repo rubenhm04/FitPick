@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitPick - MiColección</title>
+    <title>FitPick</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Michroma&family=Saira:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <!-- StyleSheet -->
-    <link rel="stylesheet" href="styles/miColeccion.css">
+    <link rel="stylesheet" href="styles/redSocialPerfil.css">
     <link rel="stylesheet" href="styles/nav-bar.css">
 </head>
 <body>
@@ -50,36 +50,33 @@
         </div>
     </nav>
 
-    <!-- Botón de cancelar eliminación -->
-    <div class="cancel-delete-container" id="cancelDeleteContainer" style="display: none;">
-        <button id="cancelDeleteBtn">Cancelar eliminación</button>
-    </div>
+    
+    <div class="main">
+        <!-- Volver Button -->
+        <button class="volver-button" onclick="window.location.href='redSocial.html'">VOLVER</button>
 
-    <!-- Sección de contenidos -->
-    <section class="main">
-        <div class="image-gallery" id="gallery">
-            <!-- Aquí se cargan las imágenes dinámicamente -->
-        </div>
-    </section>
-
-    <!-- Modal para tomar la foto -->
-    <div id="modalCamara" class="modal">
-        <div class="modal-content">
-            <video id="videoCamara" autoplay></video>
-            <div class="modal-buttons">
-                <button id="btnCapturarFoto" class="btn-capturar">Capturar Foto</button>
-                <button id="btnCancelar" class="btn-cancelar">Cancelar</button>
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <img src="img/Monigotes/monigote5.jpeg" alt="Avatar" class="profile-avatar">
+            <div class="profile-info">
+                <h1 class="username">rociopombo <span class="verified">✔</span></h1>
+                <p class="name">Rocie Pombo</p>
+                <p class="role">Figura pública</p>
+                <div class="stats">
+                    <span><strong>4</strong> publicaciones</span>
+                    <span><strong>9.3 M</strong> seguidores</span>
+                    <span><strong>903</strong> seguidos</span>
+                </div>
             </div>
         </div>
+
+        <!-- Image Gallery -->
+        <div class="image-gallery">
+            <!-- Images will be dynamically added via JS -->
+        </div>
     </div>
 
-    <!-- Para permitir que el usuario seleccione un archivo desde la galería -->
-    <input type="file" id="inputGaleria" style="display:none" accept="image/*">
-
-    <!-- Canvas oculto para capturar la imagen -->
-    <canvas id="canvas" style="display: none;"></canvas>
-
     <!-- Funcionalidad JavaScript -->
-    <script src="scripts/miColeccion.js"></script>
+    <script src="scripts/redSocialPerfil.js"></script>
 </body>
 </html>

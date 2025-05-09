@@ -1,0 +1,144 @@
+/* ESTILOS GENERALES PARA TODOS LOS ELEMENTOS DEL DOCUMENTO */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ESTILOS PARA EL CUERPO DEL DOCUMENTO */
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+    overflow-x: hidden;                                 /* Evita desplazamiento lateral */
+}
+
+/* ESTILOS PARA EL CONTENEDOR PRINCIPAL DEL DOCUMENTO */
+
+.main {
+    height: 100vh;                                      /* La sección ocupa toda la altura visible */
+    overflow: auto;                                     /* Habilita el desplazamiento vertical */
+    position: relative;
+}
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f8f8;
+}
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #000;
+}
+h1 {
+    font-size: 24px;
+}
+main {
+    padding: 20px; /* Reduced padding to avoid extra space */
+}
+.config-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+h2 {
+    font-size: 28px;
+    margin-top: 100px; /* Increased to move the text lower */
+    margin-bottom: 10px;
+}
+hr {
+    width: 50%;
+    margin: 0 auto 20px;
+}
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.buttons-section {
+    text-align: left;
+}
+button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #d2a679;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    width: 120px;
+}
+button:hover {
+    background-color: #b88a5d;
+}
+.config-section {
+    text-align: left;
+    flex-grow: 1;
+    margin-left: 20px;
+}
+label {
+    display: block;
+    margin: 10px 0;
+    font-size: 16px;
+}
+input[type="checkbox"] {
+    margin-right: 10px;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #666;
+    position: relative;
+}
+input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #666;
+    font-size: 16px;
+}
+
+
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+}
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+input[readonly] {
+    background-color: #f0f0f0;
+    color: #333;
+}

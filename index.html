@@ -24,24 +24,38 @@
                 </div>
             </div>
             <div class="dropdown">
-                <a href="miColeccion.html" id="miColeccion-link">MiColección</a>
+                <a href="miColeccion.html" id="miColeccion-link">MiArmario</a>
                 <div class="submenu" id="submenu-miColeccion">
-                    <a href="miColeccion.html" id="submenu-miColeccion-show">Ver MiColeccion</a>
+                    <a href="miColeccion.html" id="submenu-miColeccion-show">Ver MiColección</a>
                     <a href="miColeccion.html" id="submenu-miColeccion-add">Añadir Prenda</a>
+                    <div class="submenu-miColeccion-extra" id="submenu-miColeccion-extra">
+                        <a href="miColeccion.html" id="submenu-miColeccion-anaidirDeGaleria">Añadir desde Galería</a>
+                        <a href="miColeccion.html" id="submenu-miColeccion-anaidirDeCamara">Añadir desde Cámara</a>
+                    </div>
                     <a href="miColeccion.html" id="submenu-miColeccion-delete">Eliminar Prenda</a>
-                    <a href="miColeccion.html" id="submenu-miColeccion-organize">Organizar</a>
                 </div>
             </div>
+
+
+            <div class="dropdown">
+                <a id="explorar">Explorar</a>
+                <div class="submenu" id="submenu-explorar">
+                    <a href="redSocial.html" id="redSocial-link">RedSocial</a>
+                    <a href="comprar.html" id="submenu-comprar">Comprar</a>
+                </div>
+            </div>
+
+
         </div>
         <div class="marca">
             <a href="index.html" id="marca-link">FitPick</a>
         </div>
         <div class="nav-links">
             <div class="dropdown">
-                <a href="usuario.html" target="_blank" id="usuario">Adriana</a>
+                <a href="confGeneral.html" target="_blank" id="usuario">Adriana</a>
                 <div class="submenu" id="submenu-Usuario">
-                    <a href="usuario.html" id="submenu-usuario-config">Configuración</a>
-                    <a href="usuario.html" id="submenu-usuario-cerrarSesion">Cerrar Sesión</a>
+                    <a href="confGeneral.html" id="submenu-usuario-config">Configuración</a>
+                    <a href="confGeneral.html" id="submenu-usuario-cerrarSesion">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
@@ -55,6 +69,12 @@
             <a href="mostrarOutfit.html" class="button-outfit">MiOutfitDiario</a>     
         </section>
         
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Buscar a un usuario">
+            <span class="search-icon">🔍</span>
+        </div>
+
         <!-- Aquí empieza la sección de la galería de imágenes -->
         <div class="image-gallery">
             <!-- Las imágenes se cargarán aquí dinámicamente -->
