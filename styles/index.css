@@ -50,6 +50,7 @@ html, body {
     align-items: center;
 }
 
+/* Brand name */
 .brand-name {
     text-decoration: none;
     font-family: 'Audiowide', sans-serif;
@@ -92,9 +93,59 @@ html, body {
     box-shadow: var(--shadow-sm);
 }
 
+/* Scroll arrow */
+.scroll-arrow {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-white);
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem; /* Adds space between text and arrow */
+    animation: subtle-bounce 2s ease-in-out infinite;
+}
+
+.scroll-arrow svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    stroke: var(--color-white);
+    filter: drop-shadow(0.125rem 0.125rem 0.5rem rgba(0, 0, 0, 0.5));
+}
+
+.scroll-arrow:hover {
+    transform: translateX(-50%) translateY(0.25rem);
+    color: var(--color-white);
+}
+
+.scroll-arrow:hover svg {
+    stroke: var(--color-white);
+}
+
+/* Text above scroll arrow */
+.arrow-text {
+    font-family: 'Saira', sans-serif;
+    font-size: 1rem;
+    color: var(--color-white);
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 0.125rem 0.125rem 0.5rem rgba(0, 0, 0, 0.5);
+    white-space: nowrap; /* Ensures text stays on one line */
+}
+
+/* Animación sutil para la flecha */
+@keyframes subtle-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(0.25rem); }
+}
+
 /* Social network section */
 #social-network {
-    margin-top: 3.125rem; /* Same spacing as between nav-bar and index-image */
+    margin-top: 3.125rem;
 }
 
 /* Image gallery */
@@ -105,7 +156,7 @@ html, body {
     width: 95%;
     max-width: 75rem;
     margin: 0 auto;
-    padding: 0 1.25rem 1.25rem; /* Removed top padding to avoid extra spacing */
+    padding: 0 1.25rem 1.25rem;
 }
 
 .image-container {
@@ -149,9 +200,10 @@ html, body {
 }
 
 .like-count {
-    font-size: 0.875rem;
+    font-size: 12px;
     color: var(--color-text);
     margin-right: 0.3125rem;
+    font-family: 'Saira';
 }
 
 .like-button {
@@ -184,7 +236,7 @@ html, body {
     max-width: 37.5rem;
     display: flex;
     align-items: center;
-    margin: 0 auto 3.125rem; /* Added bottom margin to match 3.125rem spacing */
+    margin: 0 auto 3.125rem;
     background-color: var(--color-bg);
     border-radius: 1.5625rem;
     box-shadow: var(--shadow-sm);

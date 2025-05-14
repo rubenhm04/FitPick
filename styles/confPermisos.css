@@ -23,86 +23,103 @@ html, body {
     position: relative;
 }
 
-
-
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #f8f8f8;
-}
-nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #000;
-}
-h1 {
-    font-size: 24px;
-}
-main {
-    padding: 20px; /* Reduced padding to avoid extra space */
-}
 .config-container {
     max-width: 800px;
     margin: 0 auto;
 }
+
 h2 {
-    font-size: 28px;
-    margin-top: 100px; /* Increased to move the text lower */
+    font-family: 'Saira';
+    font-weight: normal;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 100px; 
     margin-bottom: 10px;
 }
+
 hr {
     width: 50%;
     margin: 0 auto 20px;
 }
+
 .content-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
+
 .buttons-section {
     text-align: left;
+    margin-left: -10px; /* Mueve los botones más a la izquierda */
+    margin-top: 10vh; /* Posiciona los botones aproximadamente a la mitad verticalmente */
 }
+
 button {
     display: block;
-    margin: 10px 0;
-    padding: 10px 20px;
-    background-color: #d2a679;
+    margin: 15px 0; /* Reduce el espacio entre botones */
+    padding: 8px 16px; /* Reduce el padding para hacer los botones más pequeños */
     border: none;
     border-radius: 5px;
-    color: white;
+    color: black;
     cursor: pointer;
-    width: 120px;
+    width: 120px; /* Reduce el ancho de los botones */
+    font-family: 'Saira';
+    font-size: 14px;
+    transition: all 0.3s ease; /* Suaviza las transiciones */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Agrega sombra a los botones */
+    margin-right: 50px;
 }
-button:hover {
-    background-color: #b88a5d;
+
+button[onclick="window.location.href='confPermisos.html'"] {
+    background-color: #d4a373; /* Color específico para el botón Permisos */
 }
+
+button:not([onclick="window.location.href='confPermisos.html'"]) {
+    background-color: #e3c6a5; /* Color para los otros botones */
+}
+
+button[onclick="window.location.href='confPermisos.html'"]:hover {
+    background-color: #b88a5d; /* Color al pasar el ratón */
+    transform: translateY(-2px); /* Efecto de elevación */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
+button:not([onclick="window.location.href='confPermisos.html'"]):hover {
+    background-color: #b88a5d; /* Color al pasar el ratón */
+    transform: translateY(-2px); /* Efecto de elevación */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
+
 .config-section {
     text-align: left;
     flex-grow: 1;
     margin-left: 20px;
+    margin-top: 60px; /* Mueve todo el contenido de config-section más abajo */
 }
+
 label {
-    display: block;
-    margin: 10px 0;
-    font-size: 16px;
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    font-size: 13px;
+    font-family: 'Michroma';
+    position: relative;
 }
+
 input[type="checkbox"] {
-    margin-right: 10px;
+    position: absolute;
+    left: 400px; /* Alinea todos los checkboxes en la misma coordenada X */
     appearance: none;
     width: 20px;
     height: 20px;
     border: 2px solid #666;
-    position: relative;
+    order: 2; /* Coloca el checkbox después del texto */
 }
+
+label span {
+    order: 1; /* Coloca el texto antes del checkbox */
+}
+
 input[type="checkbox"]:checked::after {
     content: '✓';
     position: absolute;

@@ -7,7 +7,7 @@
 
 /* Diseño de la página */
 body {
-    font-family: 'Saira', sans-serif;
+    font-family: 'Saira';
     background-color: #f0f0f0;
     color: #333;
     display: flex;
@@ -22,7 +22,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,9 +32,10 @@ h1 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
-    font-family: 'Michroma', sans-serif;
-    font-size: 24px;
+    font-family: 'Michroma';
+    font-size: 30px;
     position: relative;
+    font-weight: normal;
 }
 
 h1::after {
@@ -43,8 +44,8 @@ h1::after {
     bottom: -5px;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
-    height: 2px;
+    width: 370px;
+    height: 1.5px;
     background-color: #333;
 }
 
@@ -62,10 +63,17 @@ button, select {
 }
 
 button {
-    background-color: #d2b48c;
+    width: 460px;
+    padding: 10px;
+    background-color: #d4a373;
     border: none;
-    color: white;
-    font-weight: 500;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+    font-family: 'Saira', sans-serif;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
@@ -110,8 +118,9 @@ select option {
 
 label {
     font-weight: 500;
+    font-family: 'Michroma';
     margin-bottom: 5px;
     display: block;
-    font-size: 16px;
+    font-size: 13px;
     color: #333;
 }

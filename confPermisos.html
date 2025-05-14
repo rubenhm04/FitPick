@@ -18,35 +18,37 @@
     <!-- Barra de navegación -->
     <nav class="nav-bar">
         <div class="nav-links">
-            <div class="dropdown">
+            <div class="dropdown" aria-haspopup="true" aria-expanded="false">
                 <a href="mostrarOutfit.html" id="miOutfitDiario">MiOutfitDiario</a>
-                <div class="submenu" id="submenu-miColeccion">
-                    <a href="mostrarOutfit.html" id="submenu-miOutfitDiario-auto">Generar Automáticamente</a>
-                    <a href="mostrarOutfit.html" id="submenu-miOutfitDiario-paso">Generar Paso a Paso</a>
+                <div class="submenu" id="submenu-miOutfitDiario">
+                    <a href="mostrarOutfit.html?mode=auto" class="submenu-link" id="submenu-miOutfitDiario-auto">Generar Automáticamente</a>
+                    <a href="mostrarOutfit.html?mode=step" class="submenu-link" id="submenu-miOutfitDiario-paso">Generar Paso a Paso</a>
                 </div>
             </div>
-            <div class="dropdown">
-                <a href="miColeccion.html" id="miColeccion-link">MiColección</a>
-                <div class="submenu" id="submenu-miColeccion">
-                    <a href="miColeccion.html" id="submenu-miColeccion-show">Ver MiColección</a>
-                    <a href="miColeccion.html" id="submenu-miColeccion-add">Añadir Prenda</a>
-                    <div class="submenu-miColeccion-extra" id="submenu-miColeccion-extra">
-                        <a href="miColeccion.html" id="submenu-miColeccion-anaidirDeGaleria">Añadir desde Galería</a>
-                        <a href="miColeccion.html" id="submenu-miColeccion-anaidirDeCamara">Añadir desde Cámara</a>
-                    </div>
-                    <a href="miColeccion.html" id="submenu-miColeccion-delete">Eliminar Prenda</a>
+            <div class="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="miColeccion.html" id="miColeccion-link">MiArmario</a>
+                <div class="submenu" id="submenu-miArmario">
+                    <a href="miColeccion.html" class="submenu-link" id="submenu-miColeccion-show">Ver Mi Colección</a>
+                    <a href="miColeccion.html" class="submenu-link" id="submenu-miColeccion-add">Añadir Prenda</a>
+                    <a href="miColeccion.html" class="submenu-link" id="submenu-miColeccion-delete">Eliminar Prenda</a>
                 </div>
+            </div>
+            <div class="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a href="comprar.html" id="comprar">Comprar</a>
+            </div>
+            <div class="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a href="index.html" id="redSocial">Red Social</a>
             </div>
         </div>
         <div class="marca">
             <a href="index.html" id="marca-link">FitPick</a>
         </div>
         <div class="nav-links">
-            <div class="dropdown">
-                <a href="confGeneral.html" target="_blank" id="usuario">Adriana</a>
+            <div class="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="confGeneral.html" id="usuario">MiPerfil</a>
                 <div class="submenu" id="submenu-Usuario">
-                    <a href="confGeneral.html" id="submenu-usuario-config">Configuración</a>
-                    <a href="confGeneral.html" id="submenu-usuario-cerrarSesion">Cerrar Sesión</a>
+                    <a href="confGeneral.html" class="submenu-link" id="submenu-usuario-config">Configuración</a>
+                    <a href="indexInicial.html" class="submenu-link" id="submenu-usuario-cerrarSesion">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
@@ -75,5 +77,6 @@
 
     <!-- Funcionalidad JavaScript -->
     <script src="scripts/confPermisos.js"></script>
+    <script src="scripts/nav-bar.js"></script>
 </body>
 </html>

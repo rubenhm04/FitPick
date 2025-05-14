@@ -1,11 +1,9 @@
-/* CSS Variables */
 :root {
     --color-bg: #F5F5F5;
     --color-text: #000000;
     --shadow-md: 0 0.5rem 0.9375rem rgba(0, 0, 0, 0.2);
 }
 
-/* Navigation bar */
 .nav-bar {
     display: flex;
     justify-content: space-between;
@@ -22,7 +20,6 @@
     height: 3.125rem;
 }
 
-/* Brand */
 .nav-bar .marca {
     position: absolute;
     left: 50%;
@@ -37,7 +34,6 @@
     font-family: 'Audiowide', sans-serif;
 }
 
-/* Navigation links */
 .nav-links {
     display: flex;
     gap: 1.25rem;
@@ -66,12 +62,14 @@
 }
 
 .nav-links a:hover::after,
+.nav-links a.active::after, /* Nueva regla para la clase active */
 .dropdown:hover > a::after,
-.dropdown:focus-within > a::after {
+.dropdown:focus-within > a::after,
+.submenu-link:hover::after,
+.submenu-link:focus::after {
     transform: translateX(-50%) scaleX(1);
 }
 
-/* Dropdown */
 .dropdown {
     position: relative;
 }
@@ -79,7 +77,7 @@
 .submenu {
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, visibility 0s linear 0.1s;
     transform: translateY(-0.625rem);
     position: absolute;
     top: 100%;
@@ -92,6 +90,14 @@
     z-index: 10;
     margin-top: 0.625rem;
     box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Adjust submenu for right-side nav-links (Adriana) to align right */
+.nav-bar > .nav-links:last-child .submenu {
+    left: auto;
+    right: 0;
 }
 
 .dropdown:hover .submenu,
@@ -101,6 +107,7 @@
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
+    transition-delay: 0s;
 }
 
 .submenu-link {
@@ -109,33 +116,30 @@
     padding: 0.5rem 0.75rem;
     text-decoration: none;
     margin: 0.3125rem 0;
-    transition: background-color 0.3s ease;
     font-family: 'Saira', sans-serif;
+    position: relative;
 }
 
+/* Remove background shading on submenu hover */
 .submenu-link:hover,
 .submenu-link:focus {
-    background-color: #ddd;
+    background-color: transparent;
 }
 
-.submenu-miColeccion-extra {
-    padding-left: 1.875rem;
+.submenu-nested {
     display: none;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    flex-direction: column;
+    padding-left: 1.875rem;
 }
 
-#submenu-miColeccion-add:hover + .submenu-miColeccion-extra,
-#submenu-miColeccion-add:focus + .submenu-miColeccion-extra,
-.submenu-miColeccion-extra:hover,
-.submenu-miColeccion-extra:focus-within {
-    display: block;
-    visibility: visible;
-    opacity: 1;
+/* Show nested submenu on hover */
+#submenu-miColeccion-add:hover + .submenu-nested,
+#submenu-miColeccion-add:focus + .submenu-nested,
+.submenu-nested:hover,
+.submenu-nested:focus-within {
+    display: flex;
 }
 
-/* Hamburger menu */
 .hamburger {
     display: none;
     font-size: 1.5rem;
@@ -168,5 +172,11 @@
     .submenu {
         position: static;
         width: 100%;
+    }
+    .nav-bar > .nav-links:last-child .submenu {
+        right: auto;
+    }
+    .submenu-nested {
+        padding-left: 1.875rem;
     }
 }

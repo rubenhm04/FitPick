@@ -1,13 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.createElement('button');
-    hamburger.classList.add('hamburger');
-    hamburger.innerHTML = '☰';
-    hamburger.setAttribute('aria-label', 'Abrir menú');
-    document.querySelector('.nav-bar').prepend(hamburger);
+    // Obtener los enlaces de "MiArmario" y "MiOutfitDiario"
+    const miColeccionLink = document.getElementById('miColeccion-link');
+    const miOutfitLink = document.getElementById('miOutfitDiario');
+    const explorarLink = document.getElementById('comprar');
+    const usuarioLink = document.getElementById('usuario');
+    const redsocialLink = document.getElementById('redSocial');
 
-    const navLinks = document.querySelectorAll('.nav-links');
     
-    hamburger.addEventListener('click', function() {
-        navLinks.forEach(nav => nav.classList.toggle('active'));
-    });
+
+    // Verificar la página actual y añadir la clase 'active' al enlace correspondiente
+    if (window.location.pathname.includes('miColeccion.html')) {
+        miColeccionLink.classList.add('active');
+    } else if (window.location.pathname.includes('mostrarOutfit.html')) {
+        miOutfitLink.classList.add('active');
+    } else if (window.location.pathname.includes('mostrarOutfit-FotoFinal.html')) {
+        miOutfitLink.classList.add('active');
+    } else if (window.location.pathname.includes('comprar.html')) {
+        explorarLink.classList.add('active');
+    } else if (window.location.pathname.includes('confGeneral.html')) {
+        usuarioLink.classList.add('active');
+    } else if (window.location.pathname.includes('confEspecifica.html')) {
+        usuarioLink.classList.add('active');
+    } else if (window.location.pathname.includes('confPermisos.html')) {
+        usuarioLink.classList.add('active');
+    } else if (window.location.pathname.includes('index.html')) {
+        redsocialLink.classList.add('active');
+    }
+    
 });

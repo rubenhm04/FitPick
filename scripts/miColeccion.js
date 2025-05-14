@@ -3,8 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const imageGallery = document.querySelector('.image-gallery');
     const cancelDeleteContainer = document.getElementById('cancelDeleteContainer');
     const cancelDeleteButton = document.getElementById('cancelDeleteBtn');
-    const btnAñadirGaleria = document.getElementById('submenu-miColeccion-anaidirDeGaleria');
-    const btnAñadirCamara = document.getElementById('submenu-miColeccion-anaidirDeCamara');
     const btnAddClothing = document.getElementById('submenu-miColeccion-add');
     const btnDeleteClothing = document.getElementById('submenu-miColeccion-delete');
     const inputGaleria = document.getElementById('inputGaleria');
@@ -116,11 +114,13 @@ document.addEventListener('DOMContentLoaded', function () {
         addClothingContainer.classList.toggle('delete-mode', enable);
     }
 
-    // Añadir desde galería
-    btnAñadirGaleria.addEventListener('click', (event) => {
-        event.preventDefault();
-        inputGaleria.click();
-    });
+    // Añadir desde galería (vía modal)
+    if (addFromGalleryBtn) {
+        addFromGalleryBtn.addEventListener('click', () => {
+            inputGaleria.click();
+            addClothingModal.style.display = 'none';
+        });
+    }
 
     inputGaleria.addEventListener('change', (event) => {
         const file = event.target.files[0];
@@ -136,25 +136,27 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Añadir desde cámara
-    btnAñadirCamara.addEventListener('click', (event) => {
-        event.preventDefault();
-        modalCamara.style.display = 'flex';
+    // Añadir desde cámara (vía modal)
+    if (addFromCameraBtn) {
+        addFromCameraBtn.addEventListener('click', () => {
+            modalCamara.style.display = 'flex';
+            addClothingModal.style.display = 'none';
 
-        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true })
-                .then((stream) => {
-                    videoCamara.srcObject = stream;
-                })
-                .catch((err) => {
-                    alert(`Error al acceder a la cámara: ${err.message}`);
-                    modalCamara.style.display = 'none';
-                });
-        } else {
-            alert('La cámara no está disponible en este navegador.');
-            modalCamara.style.display = 'none';
-        }
-    });
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then((stream) => {
+                        videoCamara.srcObject = stream;
+                    })
+                    .catch((err) => {
+                        alert(`Error al acceder a la cámara: ${err.message}`);
+                        modalCamara.style.display = 'none';
+                    });
+            } else {
+                alert('La cámara no está disponible en este navegador.');
+                modalCamara.style.display = 'none';
+            }
+        });
+    }
 
     btnCapturarFoto.addEventListener('click', () => {
         const ctx = canvas.getContext('2d');
@@ -183,47 +185,39 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Manejar modo eliminación
-    btnDeleteClothing.addEventListener('click', (event) => {
-        event.preventDefault();
-        toggleDeleteMode(true);
-    });
+    if (btnDeleteClothing) {
+        btnDeleteClothing.addEventListener('click', (event) => {
+            event.preventDefault();
+            toggleDeleteMode(true);
+        });
+    }
 
-    cancelDeleteButton.addEventListener('click', () => {
-        toggleDeleteMode(false);
-    });
+    if (cancelDeleteButton) {
+        cancelDeleteButton.addEventListener('click', () => {
+            toggleDeleteMode(false);
+        });
+    }
 
-    // Manejar botón de añadir prenda
-    addClothingBtn.addEventListener('click', () => {
-        addClothingModal.style.display = 'flex';
-    });
+    // Manejar botón de añadir prenda (desde el navbar)
+    if (btnAddClothing) {
+        btnAddClothing.addEventListener('click', (event) => {
+            event.preventDefault();
+            addClothingModal.style.display = 'flex';
+        });
+    }
 
-    addFromGalleryBtn.addEventListener('click', () => {
-        inputGaleria.click();
-        addClothingModal.style.display = 'none';
-    });
+    // Manejar botón de añadir prenda (desde el botón flotante)
+    if (addClothingBtn) {
+        addClothingBtn.addEventListener('click', () => {
+            addClothingModal.style.display = 'flex';
+        });
+    }
 
-    addFromCameraBtn.addEventListener('click', () => {
-        modalCamara.style.display = 'flex';
-        addClothingModal.style.display = 'none';
-
-        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true })
-                .then((stream) => {
-                    videoCamara.srcObject = stream;
-                })
-                .catch((err) => {
-                    alert(`Error al acceder a la cámara: ${err.message}`);
-                    modalCamara.style.display = 'none';
-                });
-        } else {
-            alert('La cámara no está disponible en este navegador.');
-            modalCamara.style.display = 'none';
-        }
-    });
-
-    closeModalBtn.addEventListener('click', () => {
-        addClothingModal.style.display = 'none';
-    });
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', () => {
+            addClothingModal.style.display = 'none';
+        });
+    }
 
     // Manejar scroll para comprimir/extender botones
     window.addEventListener('scroll', () => {
@@ -239,26 +233,30 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Manejar hover para extender botón de añadir prenda
-    addClothingBtn.addEventListener('mouseenter', () => {
-        addClothingBtn.classList.remove('compressed');
-    });
+    if (addClothingBtn) {
+        addClothingBtn.addEventListener('mouseenter', () => {
+            addClothingBtn.classList.remove('compressed');
+        });
 
-    addClothingBtn.addEventListener('mouseleave', () => {
-        if (window.scrollY > 0) {
-            addClothingBtn.classList.add('compressed');
-        }
-    });
+        addClothingBtn.addEventListener('mouseleave', () => {
+            if (window.scrollY > 0) {
+                addClothingBtn.classList.add('compressed');
+            }
+        });
+    }
 
     // Manejar hover para extender botón de cancelar eliminación
-    cancelDeleteButton.addEventListener('mouseenter', () => {
-        cancelDeleteButton.classList.remove('compressed');
-    });
+    if (cancelDeleteButton) {
+        cancelDeleteButton.addEventListener('mouseenter', () => {
+            cancelDeleteButton.classList.remove('compressed');
+        });
 
-    cancelDeleteButton.addEventListener('mouseleave', () => {
-        if (window.scrollY > 0 && deleteMode) {
-            cancelDeleteButton.classList.add('compressed');
-        }
-    });
+        cancelDeleteButton.addEventListener('mouseleave', () => {
+            if (window.scrollY > 0 && deleteMode) {
+                cancelDeleteButton.classList.add('compressed');
+            }
+        });
+    }
 
     // Inicializar la galería al cargar la página
     initializeGallery();

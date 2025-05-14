@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FitPick: Tu plataforma para crear y compartir outfits diarios">
+    <meta name="keywords" content="outfits, moda, red social, armario virtual">
+    <title>FitPick</title>
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/nav-bar.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="nav-bar">
+        <div class="nav-links">
+            <div class="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="iniciarSesion.html" id="miOutfitDiario">MiOutfitDiario</a>
+                <div class="submenu" id="submenu-miOutfitDiario">
+                    <a href="iniciarSesion.html" class="submenu-link" id="submenu-miOutfitDiario-auto">Generar Automáticamente</a>
+                    <a href="iniciarSesion.html" class="submenu-link" id="submenu-miOutfitDiario-paso">Generar Paso a Paso</a>
+                </div>
+            </div>
+            <div class="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="iniciarSesion.html" id="miColeccion-link">MiArmario</a>
+                <div class="submenu" id="submenu-miArmario">
+                    <a href="iniciarSesion.html" class="submenu-link" id="submenu-miColeccion-show">Ver Mi Colección</a>
+                    <a href="iniciarSesion.html" class="submenu-link" id="submenu-miColeccion-add">Añadir Prenda</a>
+                    <a href="iniciarSesion.html" class="submenu-link" id="submenu-miColeccion-delete">Eliminar Prenda</a>
+                </div>
+            </div>
+            <div class="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="iniciarSesion.html" id="comprar">Comprar</a>
+            </div>
+            <div class="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="iniciarSesion.html" id="redSocial">Red Social</a>
+            </div>
+        </div>
+        <div class="marca">
+            <a href="iniciarSesion.html" id="marca-link">FitPick</a>
+        </div>
+        <div class="nav-links">
+            <div class="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="iniciarSesion.html" id="usuario">IniciarSesion</a>
+                <div class="submenu" id="submenu-Usuario">
+                    <a href="iniciarSesion.html" class="submenu-link" id="submenu-usuario-config">Configuración</a>
+                    <a href="iniciarSesion.html" class="submenu-link" id="submenu-usuario-cerrarSesion">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección de contenidos -->
+    <section class="main">
+        <!-- Aquí empieza la sección de la imagen principal -->
+        <section class="index-image">
+            <a href="index.html" class="brand-name" aria-label="FitPick">FitPick</a>
+            <a href="mostrarOutfit.html" class="button-outfit">MiOutfitDiario</a>
+            <a href="#social-network" class="scroll-arrow" aria-label="Desplazarse a la galería">
+                <span class="arrow-text">red social</span>
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 5v14"></path>
+                    <path d="M19 12l-7 7-7-7"></path>
+                </svg>
+            </a>
+        </section>
+
+        <div id="social-network">
+            <!-- Barra de búsqueda -->
+            <div class="search-bar">
+                <button class="search-icon" aria-label="Buscar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                <input type="text" id="search-input" placeholder="Busca un usuario">
+            </div>
+
+            <!-- Image Gallery -->
+            <div class="image-gallery">
+                <!-- Images will be dynamically added via JS -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Funcionalidad JavaScript -->
+
+    <script src="scripts/indexInicial.js"></script>
+    <script src="scripts/nav-bar.js"></script>
+</body>
+</html>

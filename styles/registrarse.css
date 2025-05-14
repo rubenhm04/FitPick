@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: #FFFFFF;
+    font-family: 'Space Grotesk', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 8px 15px;
+    background-color: #f0f0f0;
+    border: 2px solid #333;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.register-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+h1 {
+    font-family: 'Saira';
+    font-weight: normal;
+    font-size: 30px;
+    margin-bottom: 20px; /* Increased to 20px for distance from inputs */
+    color: #000;
+}
+
+p {
+    font-size: 14px;
+    font-family: 'Michroma';
+    margin-bottom: 20px;
+    color: #666;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-family: 'Michroma';
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    color: #666;
+    text-align: left;
+    width: 370px;
+}
+
+input {
+    width: 370px;
+    padding: 8px;
+    margin-bottom: 25px; /* Increased to 25px for separation between inputs */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Space Grotesk';
+}
+
+#registerButton {
+    width: 370px;
+    padding: 10px;
+    background-color: #e3c6a5;
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    cursor: not-allowed;
+    font-family: 'Saira', sans-serif;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#registerButton.active {
+    background-color: #d4a373;
+    cursor: pointer;
+}
+
+#registerButton.active:hover {
+    background-color: #b88a5d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Adding FitPick name at the top */
+.application-name {
+    position: absolute;
+    top: 10px;
+    font-family: 'Saira';
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
+}
+
+/* Prepared for potential register link */
+.register-link {
+    margin-top: 20px;
+    font-size: 10px; /* Reduced size as requested */
+}
+
+.register-link a {
+    color: #ff0000;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}

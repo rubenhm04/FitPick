@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitPick - MiOutfitDiario</title>
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Michroma&family=Saira:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <!-- StyleSheet -->
+    <link rel="stylesheet" href="styles/iniciarSesion.css">
+    <link rel="stylesheet" href="styles/nav-bar.css">
+</head>
+<body>
+    <a href="indexInicial.html" class="back-button">Volver ←</a>
+    <div class="login-container">
+        <h1>BIENVENIDO A FITPICK</h1>
+        <p>Por favor introduce tu email y contraseña</p>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit" id="loginButton" disabled>Iniciar Sesión</button>
+        </form>
+        <p class="register-link">¿Aún no tienes cuenta? <a href="registrarse.html">Regístrate AQUÍ</a></p>
+    </div>
+    <script src="scripts/iniciarSesion.js"></script>
+</body>
+</html>
