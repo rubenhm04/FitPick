@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitPick - Outfit Final</title>
+    <title>FitPick - Tu Outfit Perfecto</title>
     <!-- Favicon -->
     <link rel="icon" href="img/favicon.ico">
     <!-- Fonts -->
@@ -37,33 +37,39 @@
                     <a href="comprar.html" id="comprar">Comprar</a>
             </div>
             <div class="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <a href="index.html" id="redSocial">Red Social</a>
+                    <a href="indexSesionIniciada.html" id="redSocial">Red Social</a>
             </div>
         </div>
         <div class="marca">
-            <a href="index.html" id="marca-link">FitPick</a>
+            <a href="indexSesionIniciada.html" id="marca-link">FitPick</a>
         </div>
         <div class="nav-links">
             <div class="dropdown" aria-haspopup="true" aria-expanded="false">
                 <a href="confGeneral.html" id="usuario">MiPerfil</a>
                 <div class="submenu" id="submenu-Usuario">
                     <a href="confGeneral.html" class="submenu-link" id="submenu-usuario-config">Configuración</a>
-                    <a href="indexInicial.html" class="submenu-link" id="submenu-usuario-cerrarSesion">Cerrar Sesión</a>
+                    <a href="index.html" class="submenu-link" id="submenu-usuario-cerrarSesion">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
     </nav>
 
-
+   <!-- Contenedor principal -->
     <div class="container">
         <div class="outfit-display">
-            <img src="img/Monigotes/Monigote2.jpeg" alt="Outfit basado en preguntas">
-            <p>Este outfit es la elección perfecta para la ocasión, destacando por su equilibrio y armonía. Cada prenda ha sido cuidadosamente seleccionada para complementar a la perfección, creando un conjunto que transmite elegancia y estilo sin esfuerzo. Los colores y las texturas se combinan de manera fluida, ofreciendo una apariencia sofisticada y a la vez relajada.</p>
+            <div class="image-container">
+                <img id="outfit-image" src="img/Monigotes/Monigote1.jpeg" alt="Outfit generado">
+            </div>
+            <div class="text-container">
+                <h2>Tu Outfit Perfecto</h2>
+                <p>Este <span class="highlight">outfit</span> es la elección <span class="highlight">perfecta</span> para la ocasión, destacando por su equilibrio y armonía. Cada prenda ha sido cuidadosamente seleccionada para complementar a la perfección, creando un conjunto que transmite <span class="highlight">elegancia</span> y <span class="highlight">estilo</span> sin esfuerzo. Los colores y las texturas se combinan de manera fluida, ofreciendo una apariencia sofisticada y a la vez relajada.</p>
+            </div>
         </div>
     </div>
 
-    <!-- Funcionalidad JavaScript -->
+    <!-- Scripts -->
     <script src="scripts/mostrarOutfit-FotoFinal.js"></script>
     <script src="scripts/nav-bar.js"></script>
+</body>
 </body>
 </html>

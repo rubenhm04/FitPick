@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         usuarioLink.classList.add('active');
     } else if (window.location.pathname.includes('confPermisos.html')) {
         usuarioLink.classList.add('active');
-    } else if (window.location.pathname.includes('index.html')) {
+    } else if (window.location.pathname.includes('indexSesionIniciada.html')) {
         redsocialLink.classList.add('active');
     }
     

@@ -62,7 +62,7 @@
 }
 
 .nav-links a:hover::after,
-.nav-links a.active::after, /* Nueva regla para la clase active */
+.nav-links a.active::after,
 .dropdown:hover > a::after,
 .dropdown:focus-within > a::after,
 .submenu-link:hover::after,

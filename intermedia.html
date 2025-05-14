@@ -3,37 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cargando Outfit</title>
-    <!-- Favicon -->
-    <link rel="icon" href="img/favicon.ico">
+    <title>FitPick - Cargando Outfit</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: Saira, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .loading {
-            text-align: center;
-            font-size: 24px;
-            color: #333;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/intermedia.css">
 </head>
 <body>
-    <div class="loading">Generando tu outfit...</div>
-    <script>
-        // Redirigir automáticamente a mostrarOutfit-FotoFinal.html después de 2 segundos
-        setTimeout(function() {
-            window.location.href = 'mostrarOutfit-FotoFinal.html';
-        }, 2000);
-    </script>
+    <div class="loading-container">
+        <div class="text-container">
+            <h1 class="brand">FitPick</h1>
+            <p class="loading-text">Generando tu outfit...</p>
+        </div>
+        <svg class="border-animation" width="340" height="150" viewBox="0 0 340 150">
+            <rect x="2" y="2" width="336" height="146" rx="15" ry="15" fill="none" stroke="#555" stroke-width="2" class="animated-border"/>
+        </svg>
+    </div>
+    <!-- Scripts -->
+    <script src="scripts/intermedia.js"></script>
 </body>
 </html>

@@ -1,0 +1,71 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: #f5f5f5; /* Fondo consistente con miColeccion.css */
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Contenedor principal */
+.loading-container {
+    position: absolute;
+    top: 50%; /* Centrado verticalmente */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Contenedor del texto */
+.text-container {
+    position: relative;
+    z-index: 2; /* Asegura que el texto esté por encima del SVG */
+}
+
+/* Nombre de la marca */
+.brand {
+    font-family: 'Audiowide', sans-serif;
+    font-size: 2rem; /* 32px */
+    font-weight: bold; /* 700 */
+    color: #444; /* Gris más oscuro */
+    text-decoration: none; /* Consistencia con .marca a */
+    margin-bottom: 12px;
+}
+
+/* Texto de carga */
+.loading-text {
+    font-size: 28px;
+    font-weight: 400;
+    color: #444; /* Gris más oscuro */
+}
+
+/* Animación del borde */
+.border-animation {
+    position: absolute;
+    z-index: 1; /* Debajo del texto */
+}
+
+.animated-border {
+    stroke-dasharray: 100 864; /* Línea de 100px, espacio de 864px */
+    stroke-dashoffset: 0; /* Punto inicial */
+    stroke: #555; /* Gris más oscuro */
+    stroke-width: 2; /* Línea fina */
+    animation: moveBorder 4s linear infinite; /* 4 segundos por ciclo */
+}
+
+@keyframes moveBorder {
+    0% {
+        stroke-dashoffset: 0; /* Inicio del desplazamiento */
+    }
+    100% {
+        stroke-dashoffset: -964; /* Desplazamiento completo (perímetro) */
+    }
+}

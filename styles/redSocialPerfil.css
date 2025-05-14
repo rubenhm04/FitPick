@@ -42,11 +42,6 @@ html, body {
     border-color: #999;
 }
 
-.volver-button::before {
-    content: "←";
-    margin-right: 5px;
-}
-
 /* Profile Section */
 .profile-section {
     display: flex;
