@@ -64,4 +64,25 @@ document.addEventListener('DOMContentLoaded', function() {
         const imageContainer = createImageItem(image);
         imageGallery.appendChild(imageContainer);
     });
+
+
+    // Search functionality
+    const searchInput = document.getElementById('search-input');
+    const searchIcon = document.querySelector('.search-icon');
+
+    function handleSearch() {
+        const query = searchInput.value.trim();
+        if (query) {
+            window.location.href = `iniciarSesion.html?query=${encodeURIComponent(query)}`;
+        } else {
+            window.location.href = 'iniciarSesion.html';
+        }
+    }
+
+    searchIcon.addEventListener('click', handleSearch);
+    searchInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        handleSearch();
+    }
+    });    
 });

@@ -111,16 +111,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleSearch() {
         const query = searchInput.value.trim();
         if (query) {
-            window.location.href = `redSocialPerfil.html?query=${encodeURIComponent(query)}`;
+            window.location.href = `intermediaBuscarUsu.html?query=${encodeURIComponent(query)}`;
         } else {
-            window.location.href = 'redSocialPerfil.html';
+            window.location.href = 'intermediaBuscarUsu.html';
         }
     }
 
     searchIcon.addEventListener('click', handleSearch);
     searchInput.addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            handleSearch();
-        }
-    });
+    if (event.key === 'Enter') {
+        handleSearch();
+    }
+});
 });

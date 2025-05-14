@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const explorarLink = document.getElementById('comprar');
     const usuarioLink = document.getElementById('usuario');
     const redsocialLink = document.getElementById('redSocial');
-
     
 
     // Verificar la página actual y añadir la clase 'active' al enlace correspondiente
@@ -24,6 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (window.location.pathname.includes('confPermisos.html')) {
         usuarioLink.classList.add('active');
     } else if (window.location.pathname.includes('indexSesionIniciada.html')) {
+        redsocialLink.classList.add('active');
+    } else if (window.location.pathname.includes('redSocialPerfil.html')) {
         redsocialLink.classList.add('active');
     }
     
